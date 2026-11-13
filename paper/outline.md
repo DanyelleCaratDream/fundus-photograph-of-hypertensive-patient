@@ -1,0 +1,107 @@
+# 论文大纲（单一真源）
+
+> 依据 docs/20-research/14 第五节逐节素材指针 + 2026-10-17 首批写作计划（失效机理链章节组）。
+> 状态：`stub`（只有标题与指针）→ `drafted`（初稿完成）→ `polished`（修改轮过）。
+> 占位清单见文末，实验出数后 `grep -rn "【占位:" paper/` 一网打尽。
+
+## 0. Abstract / Title — `stub`
+贡献清单（docs/20-research/14 C1–C4）压缩成一段；投稿翻译时产出英文版。
+
+## 1. Introduction — `stub`
+三段式（docs/40-writing/12 §3.2）：① 临床需求（HR 分级、severe 类稀缺与类不平衡）→ ② 现有方法缺陷（30+ 篇全是"单方法自证"，带引用）→ ③ 本文贡献列表（编号式，学 RF-GANs/Khader）。
+素材：docs/40-writing/12 第一节（研究空白）+ REPORT_DL_text.txt §6.1 动机改造。**今晚不写。**
+
+## 2. Related Work — `stub`
+素材：docs/40-writing/12 全文（32 篇宽目录）+ `generate_project/literature/` + `literature/`（Tiger-Model 范文）。
+分组建议：医学影像生成（泛）/ 眼底生成 / 评估方法论 / TSTR 与记忆检测。**今晚不写。**
+
+## 3. Method
+- 3.1 问题设定与两域数据概览 — `stub`（A 域 330→299 无标签；B 域 758 四分类，severe 76 唯一底图）
+- 3.2 FiLM 条件 UNet 架构 — `stub`（素材 REPORT_DL §5.10、EXPERIMENTS DL-EX-013/014；FiLM 调制、zero_module、EMA 0.9999）
+- **3.3 损失函数设计：从 MSE 到 L1+LPIPS — `drafted`（2026-10-17）**
+  主张：暗背景占绝对多数时 MSE 最优策略是"安全暗色"，设计层预判改 L1（对离群不敏感）+ LPIPS（感知，t<200 权重 0.1），FiLM 提供通道级条件增益。
+  证据：REPORT_DL_text.txt §6.3、§5.10.2；可复现开关 `--loss_type {l1,mse}`（DL-EX 附 1）。
+  写法约束：**本节只讲设计动机，不带结果数字**（结果在 5.4，前向指针"见 5.4"）。
+- **3.4 两层评估指标与六维门控评分 — `drafted`（骨架，2026-10-17）**
+  主张：通用分布层 + 眼底语义层两层设计，动机是防通用指标盲区；六维门控把"低层代理可被博弈"的维度乘上"整体像真实"的门。
+  证据：`eval/metrics_common.py`、`metrics_fundus.py`、`score_scheme.py`（SCHEME 权重）、docs/30-evaluation/09；门控前后 VAE 57.9→26.6 实例。
+
+## 4. Experimental Setup
+- **4.1 数据来源与数据卫生 — `drafted`（2026-10-17）**
+  主张：两池独立（A 域网络图现存 299、评估快照 330 为历史冻结；B 域老师 758 = 552/135/71）；生成训练池 239→193 三查清理：旋转副本 0、池内重复（76→67 唯一）、跨 split 像素级泄漏（全树 113 对相似，MSE=0 硬泄漏 severe 3 对 + moderate 1 对）。
+  证据：docs/20-research/15 §一/§二（主源）；`fundus/_removed_dups_sq256/MANIFEST.md`；口径 #7/8/9/10/11/15。
+- 4.2 生成模型训练配置 — `stub`（各模型超参表；素材 EXPERIMENTS.md 各条目）
+- **4.3 评估协议 — `drafted`（半节，2026-10-17）**
+  主张：统一 `--num_images 60`（新方法）/ 300 张（历史 11 模型库，正文注明样本量）；DDIM 50 步评估 / 100 步 B 域出图（50/100 收敛，`eval_data/_step_compare/`）；两套评分尺度定义与分工。
+  证据：口径 #2/14/16；`eval/human_scores.csv`；`eval_data/_scores.json`（formula v1，n_models 11）。
+- 4.4 下游验证协议（TSTR）— `stub` + 【占位:TSTR-下游验证】（classify_project/README.md；基线 QWK 0.747@256 含泄漏乐观偏差，口径 #15）
+
+## 5. Results — 失效机理链主战场
+- **5.1 失效机理链总览 — `drafted`（2026-10-17，最后写）**
+  一图一表串六环（VAE→GAN→MSE 溶解→L1+LPIPS 修复→数据量假说→单变量纪律），每环带证据编号。图 1 占位。
+- **5.2 VAE：模糊天花板（blur ceiling）— `drafted`（2026-10-17）**
+  主张：像素级 MSE 重建在小样本下模糊是天性，加容量/轮数不可逃逸（800 vs 1200 轮肉眼无差，EX-001/002/003）。
+  证据：REPORT_DL_text.txt §3.2（"平均脸"）、§3.4-3.6；`vae_metrics.json`（FID 188.4 但 C2ST AUC 0.9992 = 颜色假象秒识破）；`vae_fundus_metrics.json`（hemo_retention 0.6997）；DL-EX-001/002/003；门控 57.9→26.6。
+- **5.3 GAN：判别器记忆（discriminator memorization）— `drafted`（2026-10-17）**
+  主张：三变体同根因——330 张图判上千遍，判别器背题后梯度消失或 Critic 分数爆炸。
+  证据：REPORT_DL_text.txt §4.2-4.12、§4.10 三行根因表；DL-EX-005（FID 229.8）/006（2 轮 D −398.89 爆炸）/007/008；`dcgan_fundus_metrics.json`（hemo_retention 0.0、C2ST 1.0）；口径 #4（DCGAN 1500 轮，"800"是笔误）。
+- **5.4 MSE 病灶溶解：受控消融（lesion dissolution）— `drafted`（2026-10-17，核心先写）**
+  主张：MSE 损失下出血保留率 0.254（丢约 75%），换 L1+LPIPS 恢复 1.137（4.5×）；Palette 异架构复现同现象 → 归因损失而非架构。
+  证据：REPORT_DL_text.txt §5.9.4（epoch 220/500/800 细节先好后差）、§5.9.5-5.9.6（Palette 同效应 + 推理无效）、§6.3；DL-EX-011/012/013 vs 014；`film_fundus_metrics.json`（0.2539、C2ST 0.9892）vs `film_l1lpips_fundus_metrics.json`（1.1368、C2ST 0.9146 深度方法中最低）。
+- **5.5 L1+LPIPS 修复效果与双尺度评分 — `drafted`（2026-10-17）**
+  主张：出血保留率 4.5× 恢复 + FID 178.8（vs MSE 版 200.2）；人工分 87.5（human）与门控分 45.2（gated）并存 → 相对分语义引出 6.2。
+  证据：REPORT_DL_text.txt §5.10.2；`eval/human_scores.csv`（87.5，单人 N=6）；`eval_data/_scores.json`（45.2，v1）；纪律 #6（干净样本率 25-30%，展示图注明筛选）；白点伪影/边缘噪点如实写。
+- **5.6 数据量假说与单变量验证 — `drafted`（占位已回填，2026-10-19）**
+  主张：76 张 loss 正常收敛（0.05-0.08，与成功配方 0.052 同量级）但生成塌缩——"拟合≠生成"；016 排除分辨率；018 微调保留能力（干净 2/8 与 014 常态持平）但失败样本崩得更狠；D1 失败（0/8）且归因混杂（bd64 容量 ¼ + 256px 4× 双变量）→ 单变量原则教训；**D3 vs D4 四组裁决：迁移胜出（两臂一致），但两线共同瓶颈 = 数据信息量（风格假→细节假的迁移）**。
+  证据：EXPERIMENTS.md DL-EX-015/016/017/018/019 + 021（D3 结果段双轨登记）/022（D4 结果段三重对照）；judgment_20261018/19；docs/20-research/15。
+- 5.7 传统 ML 基线与组合横评 — `stub`（**今晚不写**；素材 `machine_learning/EXPERIMENTS.md` EX-001~005 + REPORT_ML + `report/05-paper-structure.md`；门控分 poisson 80.8 / retinex 72.5 等）
+- **5.8 条件流匹配（CFM）：从失效链到可交付生成器 — `drafted`（2026-11-06）**
+  主张：失效链（5.2–5.6）的瓶颈是"信息量 × 损失先验"，DDPM 微调线（D3/D4）受限于 VP 路径 + ε 预测；
+  换 OT 线性路径 + 速度预测的 CFM，同初始化/同数据/同轮数下 FID 大幅下降，CFM@256 达专家目检 97/100——
+  失效链的"出路"。
+  - 5.8.1 CFM@128 vs D3 受控对照（同初始化/数据/轮数，唯一差异=目标函数 ε/v + 路径 VP/OT）→ FID 178.9 vs 222.7
+  - 5.8.2 CFM@256 突破（FID 121.84 vs D3 222.69，−45%；BRISQUE 13.21 逼近真实 11.02；作者判 97/100"差点没看出来"）
+  - 5.8.3 渗出区域加权（λ=8，**仅渗出加权，出血未实现**；**2026-11-06 复核：受 3× 损失尺度 + 增强错位两缺陷影响，结果仅探索、不作方法证据**；疑似渗出占比 +36%、疑似出血 +24% 属附带不作归因；FID 略改善但 72+60 样本下统计不可靠）——修正后 C1'/C2' 从零重训（待导师确认）
+  证据：EXPERIMENTS 执行记录 14–19、21；`eval_data/cfm256_{metrics,fundus_metrics}.json`；`judgment/CFM256_delivery_sheet.png`。
+  写法约束：CFM@128 对照隔离目标函数效应；CFM@256 是**交付候选**而非"最终交付"（交付在 5.10）。
+- **5.9 TTA 组件与检索条件消融 — `drafted`（2026-11-06）**
+  主张：移植 TTA-Flow（OCT 测试时适应）三组件到眼底 + FSFM 风格检索条件，受控消融定各组件贡献与迁移边界。
+  - 时间语义对齐（align）：FID 178.9→151.8，证实 DDPM→CFM 时间反转隐性损失（执行记录 20 发现）
+  - 文本条件（text）：FID 148.2（最佳）/ C2ST 0.916（最低）——零初始化 text_proj 不破坏预训练（maxdiff=0.0）
+  - 去时间条件（notime）：FID 183.7 反更差 → TTA-Flow"去时间更好"**在眼底不成立**（负结果）
+  - 检索条件（featC 手工 15 维 / featA RETFound 1024 维 + Dirichlet 重心）：FID 未改善但疑似出血像素占比 0.567（代理，未验证）、C2ST 0.836、多样性 +7.8%
+  - 双负结果：轨迹对齐 HM 投影过曝（OCT 灰度→眼底 RGB 不迁移）；Tiger 零样本类超声（跨模态预训练不迁移）
+  - 口径：全部条件模型受 2026-11-06 发现的增强错位缺陷影响（图像翻转/旋转，cond mask 未跟随）→ 结论只作相对参考
+  证据：EXPERIMENTS 执行记录 21；`eval_data/cfm128_{align,text,notime,featC,featA}_*.json`；`tta_hm/tta_compare.png`；`tiger_zeroshot_sheet.png`。
+- 5.10 交付与下游验证 — `stub` + 【占位:交付-TSTR】
+  Phase D 终局：CFM@256 生成 300+ → 作者筛 76 → 老师审核 → 替换 train 翻转副本 → 重训分类器 → TSTR vs 基线 QWK 0.747@256。
+  交付状态（2026-11-06）：旧管线 `delivery_final` 200 张已落盘（仅初筛）；`delivery_lesion` 生成中；
+  `--resumable` 已实现（逐批落盘、断点续跑）；正式交付待修正管线重生成。
+  证据：`eval_data/delivery_{final,lesion}/`；`classify_project/`。【占位:TSTR-下游验证】销账在此。
+
+## 6. Discussion
+- **6.1 失效机理的统一解释 — `drafted`（2026-10-17）**
+  主张：三代死因 = 损失先验 × 数据统计的交互；小样本核心瓶颈是信息量而非容量——容量/轮数不可替代信息量（REPORT_DL §6.3 后两条）。
+- **6.2 评估方法论教训 — `drafted`（2026-10-17）**
+  主张：通用分布指标看不出医学语义差异是学界共识的新实例（Deo 2025 必引，Jayasumana 2024 等）；病灶实例级保留率与 LFS（Asokan 2026，条件 mask 参照 + Dice）/ FRD（Konz 2026，分布级放射组学距离）划界；两套评分尺度的分工。
+  证据：docs/40-writing/12 第一节 + 第三节（划界表）。**引用红线全程生效。**
+- 6.3 下游验证与专家盲评 — `stub`（待 Phase D；docs/30-evaluation/13 协议；Low-LFS paradox 对话点）
+- 6.4 与同类工作的定位 — `stub`（**今晚不写**；docs/40-writing/12 §四：可立/不可立的说法）
+
+## 7. Limitations & Conclusion — `stub`
+素材：docs/40-writing/11 第五节"过度声称高危区"逐条自查；口径 #15 泄漏声明；干净样本率。
+
+---
+
+## 占位清单（出数后逐个销账）
+
+| 占位符 | 位置 | 等什么 | 预计出数 |
+|:--|:--|:--|:--|
+| ~~【占位:D3-数据量裁决】~~ | 5.6 | ✅ 2026-10-19 已回填（EXPERIMENTS DL-EX-021 结果段） | — |
+| ~~【占位:D4-微调vs从零】~~ | 5.6 | ✅ 2026-10-19 已回填（EXPERIMENTS DL-EX-022 结果段） | — |
+| 【占位:TSTR-下游验证】 | 4.4 / 6.3 | Phase D：正式替换图 → 老师审核 → 分类器 TSTR vs 基线 QWK 0.747@256 | 未排期 |
+| 【占位:盲评-专家打分】 | 6.3 | docs/30-evaluation/13 专家盲评（评分表模板未建） | 未排期 |
+
+## 字数预算（首批章节组 ~7,000 字）
+
+3.3（700）/ 3.4（300）/ 4.1（900）/ 4.3（400）/ 5.1（350）/ 5.2（550）/ 5.3（650）/ 5.4（1000）/ 5.5（550）/ 5.6（750）/ 6.1（450）/ 6.2（450）

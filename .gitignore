@@ -1,0 +1,112 @@
+# === Python ===
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+# 例外：research-report 的构建脚本是交付物的一部分，必须入库（2026-11-13）
+!research-report/build/
+
+# === 模型权重（使用 Git LFS 或单独分发） ===
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+*.bin
+
+# === 训练日志 ===
+logs/
+tb_logger/
+
+# === IDE ===
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# === 操作系统 ===
+Thumbs.db
+.DS_Store
+
+# === Claude 本地配置（全部不入库，2026-11-13 作者定）===
+# settings.local.json / scheduled_tasks.json / commands/ 一律本地保留
+.claude/
+# 项目级 AI 约定文件同样不入库（本地保留）
+CLAUDE.md
+
+# === 数据集（不在 git 中分发，图像/子集目录忽略） ===
+fundus/*
+# 但审计/清单类记录入库（论文数据审计证据，非图像数据）
+!fundus/reports/
+!fundus/README.md
+!fundus/hrsevere_61_frozen.json
+!fundus/hrsevere_61_FROZEN.md
+!fundus/_removed_dups_sq256/MANIFEST.md
+
+# === 评估图（只提交评估结果 JSON/CSV，不提交 1800+ 张图片） ===
+eval_data/*/
+
+# === 大文件 ===
+*.pdf
+*.zip
+*.tar.gz
+*.rar
+
+# === 临时实验输出（保留 images/ 和 models/ 在各自目录中） ===
+**/results_ColorJitter*/
+
+# === 训练中间产物（2026-11-11 补：epoch 预览图与 checkpoint 不入库）===
+**/results*/**/images/
+**/results*/**/models/
+**/results*/**/logs/
+
+# === 判图产物 / 真实患者图像不入库（2026-11-11 隐私清理）===
+# 判图目录含真实 severe 患者的对比图（realdonor、vs_real、compare_with_real 等），
+# 公开仓库不再包含；本地保留，报告中的关键图由 REPORT_DL.docx 自带。
+**/judgment*/
+
+# === A 域配对复核叠加图含真实患者图（2026-11-12）：只入库 JSON，图片留本地 ===
+research-report/audit/a_domain_20261111/a_domain_pair_check_20261111/*.png
+
+# === B1 线（SD2.1 LoRA 生成实验，2026-10-20 起） ===
+# 权重沿用顶部约定不入 git（官方检查点 lora_step_00500 本地留存、单独分发）；
+# 训练数据是老师数据集的副本，组员用 b1b_make_data.py 从 fundus/ 重建
+b1b_data/
+b1b_lora/
+*.log
+
+# === 预训练线数据副本（可由 tools/b1b_make_data.py 重建） ===
+pretrained/SD21-LoRA/data/b1b_data/
+
+# 临时错误输出
+*.err
+
+# 上游参考实现（体积大、上游变动）
+**/upstream/
+
+# === 报告 docx 不入库（2026-11-13 作者口径：本地保留，单独分发）===
+research-report/*.docx
+
+# === 训练预览图 / 生成示例（派生，可由 checkpoint 复现，2026-11-13 清库）===
+**/results*/**/*.png
+**/sdedit_*/
+**/results/tiger_zeroshot/
+
+# === 血管 mask 派生数据（可由 fundus/ + 预处理脚本重建，2026-11-13 清库）===
+generate_project/deep_learning/*/CFM/data/conditions_*/
+generate_project/deep_learning/*/CFM/data/lesion_weights_*/
+generate_project/deep_learning/*/ddpm/conditions*/
+generate_project/deep_learning/*/ddpm/lesion_weights_*/
+
+# === 2026-11-06 派生/备份产物 ===
+research-report/*_backup_*.docx
+research-report/_media_dl/
+eval_data/_audit/inception_feats/
+judgment/delivery_screening_*/
+
+# === OCT 复现（暂停；下载/内嵌仓库不入库） ===
+OCT/download/
+OCT/work/code/tta-flow/
+**/tmp_repo/

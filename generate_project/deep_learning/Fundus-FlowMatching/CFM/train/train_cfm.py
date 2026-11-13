@@ -1,0 +1,177 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""CFM 训练入口（薄封装）
+
+真正实现：../../Fundus-Diffusion/ddpm/train.py --objective cfm（共用 FiLM UNet / 数据管线 /
+EMA / 温度守护）。本脚本只负责三套预设配置与绝对路径，避免复制训练器造成代码分叉。
+
+用法
+    python train/train_cfm.py --preset cfm256_lesion
+    python train/train_cfm.py --preset cfm256_lesion --epochs 1600   # 额外参数原样透传
+"""
+import argparse
+import subprocess
+import sys
+from pathlib import Path
+
+HERE = Path(__file__).resolve()
+CFM = HERE.parents[1]                    # Fundus-FlowMatching/CFM
+FLOW = CFM.parent                        # Fundus-FlowMatching
+DL = FLOW.parent                         # deep_learning
+REPO = DL.parents[1]                       # 仓库根（deep_learning → generate_project → 仓库根）
+DDPM = DL / "Fundus-Diffusion" / "ddpm"
+
+PRESETS = {
+    # A 域最佳权重 → 老师 128 数据（CFM@128，320 轮）
+    "cfm128": [
+        "--objective", "cfm",
+        "--dataset_path", str(REPO / "fundus/combined_sq128"),
+        "--cond_path", str(CFM / "data/conditions_combined_128"),
+        "--resume", str(DDPM / "results_film_l1lpips/models/final_model.pth"),
+        "--img_size", "128", "--base_dim", "128", "--batch_size", "2",
+        "--epochs", "1100",
+        "--output_dir", str(CFM / "results/cfm128"),
+    ],
+    # CFM@128 → 原生 256（320 轮）
+    "cfm256": [
+        "--objective", "cfm",
+        "--dataset_path", str(REPO / "fundus/combined_sq256"),
+        "--cond_path", str(CFM / "data/conditions_combined_256"),
+        "--resume", str(CFM / "models/cfm128_final_model.pth"),
+        "--img_size", "256", "--base_dim", "128", "--batch_size", "1",
+        "--epochs", "1420",
+        "--output_dir", str(CFM / "results/cfm256"),
+    ],
+    # 消融：时间轴与 DDPM 对齐（t=0 噪声→index999），其余与 cfm128 完全一致
+    "cfm128_align": [
+        "--objective", "cfm", "--cfm_time_align",
+        "--dataset_path", str(REPO / "fundus/combined_sq128"),
+        "--cond_path", str(CFM / "data/conditions_combined_128"),
+        "--resume", str(DDPM / "results_film_l1lpips/models/final_model.pth"),
+        "--img_size", "128", "--base_dim", "128", "--batch_size", "2",
+        "--epochs", "1100",
+        "--output_dir", str(CFM / "results/cfm128_align"),
+    ],
+    # 文本条件 A/B：与 cfm128 同预算，额外接 CLIP 文本分支（normal/severe 两个提示）
+    "cfm128_text": [
+        "--objective", "cfm", "--use_text_cond",
+        "--dataset_path", str(REPO / "fundus/combined_sq128"),
+        "--cond_path", str(CFM / "data/conditions_combined_128"),
+        "--resume", str(DDPM / "results_film_l1lpips/models/final_model.pth"),
+        "--severe_list_dir", str(REPO / "fundus/HRSG_4_758_sq256/train/severe"),
+        "--img_size", "128", "--base_dim", "128", "--batch_size", "2",
+        "--epochs", "1100",
+        "--output_dir", str(CFM / "results/cfm128_text"),
+    ],
+    # C 路：手工可解释特征 + 类内 Dirichlet 重心条件（检索增强，提多样性）
+    "cfm128_featC": [
+        "--objective", "cfm",
+        "--feat_cond_dir", str(CFM / "data/handcrafted"),
+        "--dataset_path", str(REPO / "fundus/combined_sq128"),
+        "--cond_path", str(CFM / "data/conditions_combined_128"),
+        "--resume", str(DDPM / "results_film_l1lpips/models/final_model.pth"),
+        "--img_size", "128", "--base_dim", "128", "--batch_size", "2",
+        "--epochs", "1100",
+        "--output_dir", str(CFM / "results/cfm128_featC"),
+    ],
+    # 去时间条件（TTA-Flow）：UNet 不接收 t，其余同 cfm128
+    "cfm128_notime": [
+        "--objective", "cfm", "--no_time_cond",
+        "--dataset_path", str(REPO / "fundus/combined_sq128"),
+        "--cond_path", str(CFM / "data/conditions_combined_128"),
+        "--resume", str(DDPM / "results_film_l1lpips/models/final_model.pth"),
+        "--img_size", "128", "--base_dim", "128", "--batch_size", "2",
+        "--epochs", "1100",
+        "--output_dir", str(CFM / "results/cfm128_notime"),
+    ],
+    # A 路：RETFound-CFP 1024 维特征 + 重心条件
+    "cfm128_featA": [
+        "--objective", "cfm",
+        "--feat_cond_dir", str(CFM / "data/retfound_cfp"),
+        "--dataset_path", str(REPO / "fundus/combined_sq128"),
+        "--cond_path", str(CFM / "data/conditions_combined_128"),
+        "--resume", str(DDPM / "results_film_l1lpips/models/final_model.pth"),
+        "--img_size", "128", "--base_dim", "128", "--batch_size", "2",
+        "--epochs", "1100",
+        "--output_dir", str(CFM / "results/cfm128_featA"),
+    ],
+    # CFM@256 → 病灶加权续训（150 轮）
+    "cfm256_lesion": [
+        "--objective", "cfm",
+        "--dataset_path", str(REPO / "fundus/combined_sq256"),
+        "--cond_path", str(CFM / "data/conditions_combined_256"),
+        "--lesion_weight_dir", str(CFM / "data/lesion_weights_256"),
+        "--lesion_lambda", "8",
+        "--resume", str(CFM / "models/cfm256_final_model.pth"),
+        "--img_size", "256", "--base_dim", "128", "--batch_size", "1",
+        "--epochs", "1570",
+        "--output_dir", str(CFM / "results/cfm256_lesion"),
+    ],
+    # ---- 修正管线（2026-11-07 冻结 61 张 HR severe 名单后）----
+    # 数据：fundus/hrsevere_61_sq{128,256}（61 张老师 HR severe 唯一底图，从零、同步增强）。
+    # 名单冻结见 fundus/hrsevere_61_frozen.json；5 张 1ffa95aX 潜在序列关联图保留并披露局限。
+    "cfm128_hrsevere_pilot": [
+        "--objective", "cfm",
+        "--dataset_path", str(REPO / "fundus/hrsevere_61_sq128"),
+        "--cond_path", str(CFM / "data/conditions_hrsevere_61_128"),
+        "--img_size", "128", "--base_dim", "128", "--batch_size", "2",
+        "--epochs", "320",
+        "--output_dir", str(CFM / "results/cfm128_hrsevere_pilot"),
+    ],
+    # 两臂唯一差异 = lesion_lambda（0 vs 8）；都带 lesion_weight_dir 保持数据 tuple 一致，
+    # λ=0 时数学上等于普通 L1。C2 正式名称：渗出候选区域加权 CFM。
+    "cfm256_clean_ctrl": [
+        "--objective", "cfm",
+        "--dataset_path", str(REPO / "fundus/hrsevere_61_sq256"),
+        "--cond_path", str(CFM / "data/conditions_hrsevere_61_256"),
+        "--lesion_weight_dir", str(CFM / "data/lesion_weights_hrsevere_61_256"),
+        "--lesion_lambda", "0",
+        "--img_size", "256", "--base_dim", "128", "--batch_size", "1",
+        "--epochs", "320",
+        "--output_dir", str(CFM / "results/cfm256_clean_ctrl"),
+    ],
+    "cfm256_clean_exudate": [
+        "--objective", "cfm",
+        "--dataset_path", str(REPO / "fundus/hrsevere_61_sq256"),
+        "--cond_path", str(CFM / "data/conditions_hrsevere_61_256"),
+        "--lesion_weight_dir", str(CFM / "data/lesion_weights_hrsevere_61_256"),
+        "--lesion_lambda", "8",
+        "--img_size", "256", "--base_dim", "128", "--batch_size", "1",
+        "--epochs", "320",
+        "--output_dir", str(CFM / "results/cfm256_clean_exudate"),
+    ],
+    # ---- 阶段1：干净 A 域 CFM 预训练（2026-11-11 冻结名单 258 张，
+    #      见 fundus/a_domain_clean_frozen.json（导师批准）；299 = 330−31作者淘汰，
+    #      再排除 20 md5 + 19 跨池换壳新增 + 2 池内换壳 = 41 → 258；
+    #      闭合表 research-report/audit/a_domain_20261111/a_closure_table_20261111.md）----
+    "a_domain_clean_cfm128": [
+        "--objective", "cfm",
+        "--dataset_path", str(REPO / "fundus/a_domain_clean"),
+        "--cond_path", str(CFM / "data/conditions_a_domain_clean"),
+        "--img_size", "128", "--base_dim", "128", "--batch_size", "5",
+        "--epochs", "780",
+        "--output_dir", str(CFM / "results/a_domain_clean_cfm128"),
+    ],
+}
+
+COMMON = [
+    "--loss_type", "l1", "--use_lpips", "--lpips_weight", "0.1",
+    "--color_weight", "0.01", "--cool_sleep", "-0.5",
+    "--num_workers", "0", "--seed", "42", "--image_save_interval", "25",
+]
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--preset", required=True, choices=sorted(PRESETS))
+    ap.add_argument("--dry-run", action="store_true")
+    a, extra = ap.parse_known_args()
+    cmd = [sys.executable, str(DDPM / "train.py")] + PRESETS[a.preset] + COMMON + extra
+    print(" ".join(cmd), flush=True)
+    if a.dry_run:
+        return
+    raise SystemExit(subprocess.call(cmd, cwd=str(DDPM)))
+
+
+if __name__ == "__main__":
+    main()
