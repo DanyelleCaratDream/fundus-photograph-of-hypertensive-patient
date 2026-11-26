@@ -1,0 +1,20 @@
+########## A2 ##########
+==================================================================
+  分辨率 256×256   设备 cuda   种子 [42, 52, 62]
+  数据 fundus\HRSG_4_758_sq256_dedup14
+  确定性 True  (det_algo=True  cudnn.det=True  bench=False  CUBLAS_WORKSPACE_CONFIG=:4096:8)
+  温度护栏 75.0°C (每 2 batch 查一次；0=关闭)
+==================================================================
+  seed42  → acc 0.6061  bAcc 0.6181  macroF1 0.6290  QWK 0.6966  severe召回 0.7500   (145s)
+  seed52  → acc 0.6970  bAcc 0.7014  macroF1 0.7104  QWK 0.7872  severe召回 0.7500   (144s)
+  seed62  → acc 0.7273  bAcc 0.7361  macroF1 0.7325  QWK 0.8406  severe召回 0.8333   (153s)
+
+  ── 分辨率 256 汇总（3 个种子）──
+     acc              0.6768 ± 0.0515
+     balanced_acc     0.6852 ± 0.0495
+     macro_f1         0.6906 ± 0.0445
+     qwk              0.7748 ± 0.0594
+     severe_recall    0.7778 ± 0.0393
+
+  已写 classify_project/results/leakfix_sens_20261117/A2_20261117.json
+########## 完成 ##########

@@ -1,0 +1,563 @@
+1: # -*- coding: utf-8 -*-
+2: """HR 四级分级分类器 —— 用于分辨率消融实验（128 / 256 / 512 哪个够用）。
+3: 
+4: 设计取舍（为了让"分辨率"成为唯一变量）：
+5:   · 训练时**不做数据增强**，只 resize + 归一化
+6:   · 固定用数据集自带的 train/val/test 划分（不重新切分，保持与老师协议一致）
+7:   · 多个随机种子重复训练，报告 均值 ± 标准差
+8: 
+9: 用法：
+10:     python classify_project/scripts/train_classifier.py --data fundus/HRSG_4_758_square --size 256
+11:     python classify_project/scripts/train_classifier.py --data ... --size 256 --seeds 42 52 62
+12: """
+13: from __future__ import annotations
+14: 
+15: import argparse
+16: import json
+17: import math
+18: import os
+19: import random
+20: import sys
+21: import time
+22: from pathlib import Path
+23: 
+24: import numpy as np
+25: import torch
+26: import torch.nn as nn
+27: from PIL import Image
+28: from sklearn.metrics import (balanced_accuracy_score, cohen_kappa_score,
+29:                              confusion_matrix, f1_score)
+30: from torch.utils.data import (DataLoader, Dataset, SubsetRandomSampler,
+31:                               WeightedRandomSampler)
+32: from torchvision import models, transforms
+33: 
+34: Image.MAX_IMAGE_PIXELS = None
+35: CLASSES = ["normal", "mild", "moderate", "severe"]   # 有序！0<1<2<3
+36: NUM_CLASSES = len(CLASSES)
+37: 
+38: 
+39: def enable_determinism() -> None:
+40:     """DL-EX-032：打开**严格**确定性（warn_only=False，不支持即报错）。
+41: 
+42:     `CUBLAS_WORKSPACE_CONFIG` 必须在 CUDA 初始化前生效。正式训练由
+43:     `run_t3_pilot.sh` 在启动 Python 前 export；这里的 setdefault 只在
+44:     "本进程尚未触碰 CUDA" 时有效，是兜底而**不是**主要手段。
+45:     """
+46:     os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
+47:     torch.use_deterministic_algorithms(True)      # warn_only=False
+48:     torch.backends.cudnn.deterministic = True
+49:     torch.backends.cudnn.benchmark = False
+50: 
+51: 
+52: def determinism_state() -> dict:
+53:     """当前确定性/版本/硬件快照，写入每次训练 JSON。只读，不改任何状态。"""
+54:     cuda_init = bool(torch.cuda.is_initialized())   # 先取，get_device_name 会触发初始化
+55:     return {
+56:         "deterministic_algorithms": bool(torch.are_deterministic_algorithms_enabled()),
+57:         "cudnn_deterministic": bool(torch.backends.cudnn.deterministic),
+58:         "cudnn_benchmark": bool(torch.backends.cudnn.benchmark),
+59:         "cublas_workspace_config": os.environ.get("CUBLAS_WORKSPACE_CONFIG"),
+60:         "torch_version": torch.__version__,
+61:         "cuda_version": torch.version.cuda,
+62:         "cudnn_version": torch.backends.cudnn.version(),
+63:         "gpu_name": torch.cuda.get_device_name(0) if torch.cuda.is_available() else None,
+64:         "device": "cuda" if torch.cuda.is_available() else "cpu",
+65:         "cuda_initialized": cuda_init,
+66:     }
+67: 
+68: 
+69: class FundusFolder(Dataset):
+70:     """按 {root}/{split}/{class}/*.jpg 读取。"""
+71: 
+72:     def __init__(self, root: Path, split: str, size: int, train: bool):
+73:         self.items: list[tuple[Path, int]] = []
+74:         for ci, cname in enumerate(CLASSES):
+75:             d = root / split / cname
+76:             if not d.is_dir():
+77:                 continue
+78:             for f in sorted(d.iterdir()):
+79:                 if f.suffix.lower() in (".jpg", ".jpeg", ".png", ".bmp"):
+80:                     self.items.append((f, ci))
+81:         self.is_synth = [False] * len(self.items)   # 与 items 严格平行：是否为合成图
+82:         self.size = size
+83:         # 训练/评估用同一套预处理（只是缩放+归一化），保证分辨率是唯一变量
+84:         self.tf = transforms.Compose([
+85:             transforms.Resize((size, size), antialias=True),
+86:             transforms.ToTensor(),
+87:             transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
+88:         ])
+89: 
+90:     def add_items(self, paths, class_idx: int, synth: bool = True) -> int:
+91:         """追加额外训练图（如合成图）。默认不调用 → 行为与旧版完全一致。"""
+92:         for p in paths:
+93:             self.items.append((Path(p), class_idx))
+94:             self.is_synth.append(synth)
+95:         return len(paths)
+96: 
+97:     def __len__(self) -> int:
+98:         return len(self.items)
+99: 
+100:     def __getitem__(self, i: int):
+101:         path, label = self.items[i]
+102:         with Image.open(path) as im:
+103:             im = im.convert("RGB")
+104:         return self.tf(im), label
+105: 
+106: 
+107: def build_model(size: int, pretrained: bool = True) -> nn.Module:
+108:     weights = models.ResNet18_Weights.IMAGENET1K_V1 if pretrained else None
+109:     m = models.resnet18(weights=weights)
+110:     m.fc = nn.Linear(m.fc.in_features, NUM_CLASSES)
+111:     return m
+112: 
+113: 
+114: def metrics_from_preds(y_true: np.ndarray, y_pred: np.ndarray) -> dict:
+115:     severe = CLASSES.index("severe")
+116:     rec = {}
+117:     for i, c in enumerate(CLASSES):
+118:         m = y_true == i
+119:         rec[f"recall_{c}"] = float((y_pred[m] == i).mean()) if m.any() else float("nan")
+120:     return {
+121:         "acc": float((y_true == y_pred).mean()),
+122:         "balanced_acc": float(balanced_accuracy_score(y_true, y_pred)),
+123:         "macro_f1": float(f1_score(y_true, y_pred, average="macro", zero_division=0)),
+124:         "qwk": float(cohen_kappa_score(y_true, y_pred, weights="quadratic")),
+125:         "severe_recall": rec["recall_severe"],
+126:         "n": int(len(y_true)),
+127:         "confusion": confusion_matrix(y_true, y_pred, labels=range(NUM_CLASSES)).tolist(),
+128:     }
+129: 
+130: 
+131: @torch.no_grad()
+132: def collect_logits(model, loader, device) -> tuple[np.ndarray, np.ndarray]:
+133:     """返回 (y_true, logits)，供 logit adjustment 在 val/test 上复用。"""
+134:     model.eval()
+135:     ys, zs = [], []
+136:     for x, y in loader:
+137:         x = x.to(device)
+138:         zs.append(model(x).cpu().numpy())
+139:         ys.append(y.numpy())
+140:     return np.concatenate(ys), np.concatenate(zs)
+141: 
+142: 
+143: def apply_logit_adjust(logits: np.ndarray, prior: np.ndarray, tau: float) -> np.ndarray:
+144:     """post-hoc logit adjustment：z - tau * log(pi)。"""
+145:     return logits - tau * np.log(np.clip(prior, 1e-12, None))
+146: 
+147: 
+148: def tune_tau(logits: np.ndarray, y_true: np.ndarray, prior: np.ndarray,
+149:              grid=(0.0, 0.25, 0.5, 0.75, 1.0)) -> tuple[float, dict]:
+150:     """只在 val 上选 tau；返回 (tau, 对应 val 指标)。"""
+151:     best_tau, best = 0.0, {"qwk": -2.0}
+152:     for tau in grid:
+153:         pred = apply_logit_adjust(logits, prior, tau).argmax(1)
+154:         m = metrics_from_preds(y_true, pred)
+155:         if m["qwk"] > best["qwk"] + 1e-12:
+156:             best_tau, best = float(tau), m
+157:     return best_tau, best
+158: 
+159: 
+160: def class_counts(items) -> np.ndarray:
+161:     return np.bincount([y for _, y in items], minlength=NUM_CLASSES).astype(np.float64)
+162: 
+163: 
+164: def make_balanced_sampler(items) -> WeightedRandomSampler:
+165:     """按逆频率采样，供 DRC 阶段2 用。"""
+166:     cnt = class_counts(items)
+167:     w = torch.tensor([1.0 / cnt[y] for _, y in items], dtype=torch.double)
+168:     return WeightedRandomSampler(w, num_samples=len(w), replacement=True)
+169: 
+170: 
+171: def freeze_backbone_reset_head(model: nn.Module, device: str) -> nn.Module:
+172:     """DRC 阶段2：冻结全部参数，重初始化并只训练 fc。"""
+173:     for p in model.parameters():
+174:         p.requires_grad = False
+175:     model.fc = nn.Linear(model.fc.in_features, NUM_CLASSES).to(device)
+176:     for p in model.fc.parameters():
+177:         p.requires_grad = True
+178:     return model
+179: 
+180: 
+181: @torch.no_grad()
+182: def evaluate(model, loader, device) -> tuple[dict, np.ndarray, np.ndarray]:
+183:     y_true, z = collect_logits(model, loader, device)
+184:     y_pred = z.argmax(1)
+185:     return metrics_from_preds(y_true, y_pred), y_true, y_pred
+186: 
+187: 
+188: def save_test_predictions(dump_dir: Path, arm: str, seed: int, root: Path,
+189:                           te: "FundusFolder", y_true: np.ndarray,
+190:                           y_pred: np.ndarray, logits: np.ndarray,
+191:                           extra: dict | None = None) -> Path:
+192:     """逐图落盘（decision logits/probs），供 bootstrap CI / 校准 / 错误分析复算。
+193: 
+194:     顺序与 `te.items` 严格一致（test loader shuffle=False），并校验长度。
+195:     """
+196:     paths = [p for p, _ in te.items]
+197:     if len(paths) != len(y_true):
+198:         raise RuntimeError(f"预测数与 test 文件数不一致：{len(paths)} vs {len(y_true)}")
+199:     probs = torch.softmax(torch.tensor(logits, dtype=torch.float32), dim=1).numpy()
+200:     images = []
+201:     for p, yt, yp, z, pr in zip(paths, y_true, y_pred, logits, probs):
+202:         try:
+203:             rel = str(p.relative_to(root))
+204:         except ValueError:
+205:             rel = str(p)
+206:         images.append({"path": rel, "y_true": int(yt), "y_pred": int(yp),
+207:                        "logits": [float(v) for v in z],
+208:                        "probs": [float(v) for v in pr]})
+209:     dump_dir.mkdir(parents=True, exist_ok=True)
+210:     out = dump_dir / f"{arm}_seed{seed}.json"
+211:     payload = {"arm": arm, "seed": int(seed), "size": te.size,
+212:                "classes": CLASSES, "n": len(images), "images": images}
+213:     if extra:
+214:         payload.update(extra)
+215:     out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+216:     return out
+217: 
+218: 
+219: def train_one(size: int, root: Path, seed: int, epochs: int, bs: int,
+220:               lr: float, weight_decay: float, device: str, weighted: bool,
+221:               num_workers: int, quiet: bool, logit_adjust: bool = False,
+222:               drc: bool = False, drc_stage2_epochs: int = 10,
+223:               drc_stage2_lr: float = 1e-3, dump_dir: Path | None = None,
+224:               arm: str = "A0", class_weights: list[float] | None = None,
+225:               fixed_draws: int | None = None,
+226:               extra_train_severe_dir: str | None = None,
+227:               run_meta: dict | None = None) -> dict:
+228:     random.seed(seed); np.random.seed(seed); torch.manual_seed(seed)
+229: 
+230:     tr = FundusFolder(root, "train", size, train=True)
+231:     va = FundusFolder(root, "val", size, train=False)
+232:     te = FundusFolder(root, "test", size, train=False)
+233:     if not tr.items or not te.items:
+234:         raise RuntimeError(f"数据为空：train={len(tr)} test={len(te)}")
+235: 
+236:     # ---- DL-EX-032：可选追加合成图到训练集（只加 severe；默认不传 = 旧行为）----
+237:     n_real_train = len(tr.items)
+238:     n_synth_train = 0
+239:     if extra_train_severe_dir:
+240:         sd = Path(extra_train_severe_dir)
+241:         if not sd.is_dir():
+242:             raise RuntimeError(f"合成图目录不存在：{sd}")
+243:         synth_paths = [p for p in sorted(sd.rglob("*"))
+244:                        if p.suffix.lower() in (".jpg", ".jpeg", ".png", ".bmp")]
+245:         n_synth_train = tr.add_items(synth_paths, CLASSES.index("severe"), synth=True)
+246:         if not quiet:
+247:             print(f"      + 合成图 {n_synth_train} 张 → train/severe（训练池 {len(tr)}）")
+248: 
+249:     use_fixed = fixed_draws is not None
+250:     if use_fixed and not (0 < fixed_draws <= len(tr)):
+251:         raise RuntimeError(f"--fixed-draws={fixed_draws} 超出训练池大小 {len(tr)}")
+252: 
+253:     if use_fixed:
+254:         dl_tr = None                       # 逐 epoch 重建（固定抽样数）
+255:     else:
+256:         dl_tr = DataLoader(tr, batch_size=bs, shuffle=True, num_workers=num_workers,
+257:                            pin_memory=True, drop_last=False)
+258:     dl_va = DataLoader(va, batch_size=bs, shuffle=False, num_workers=num_workers)
+259:     dl_te = DataLoader(te, batch_size=bs, shuffle=False, num_workers=num_workers)
+260: 
+261:     model = build_model(size).to(device)
+262:     opt = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=weight_decay)
+263:     sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, T_max=epochs)
+264: 
+265:     if weighted:
+266:         if class_weights is not None:
+267:             if len(class_weights) != NUM_CLASSES:
+268:                 raise RuntimeError(f"--class-weights 需要 {NUM_CLASSES} 个数（{CLASSES}），实际 {len(class_weights)}")
+269:             w = torch.tensor(class_weights, dtype=torch.float32, device=device)
+270:             weight_source = "explicit"
+271:         else:
+272:             cnt = class_counts(tr.items).astype(np.float32)
+273:             w = torch.tensor((cnt.sum() / (cnt + 1e-6)) / NUM_CLASSES, device=device)
+274:             weight_source = "computed"
+275:         crit = nn.CrossEntropyLoss(weight=w)
+276:     else:
+277:         w = None
+278:         weight_source = "none"
+279:         crit = nn.CrossEntropyLoss()
+280: 
+281:     best = {"qwk": -2.0}
+282:     best_state = None
+283:     best_ep = 0
+284:     opt_steps = 0
+285:     epoch_stats: list[dict] = []
+286:     exposure = np.zeros(len(tr), dtype=np.int64)   # 逐图累计抽样次数（只记录，不影响抽样）
+287:     for ep in range(1, epochs + 1):
+288:         model.train()
+289:         tot = 0.0
+290:         if use_fixed:
+291:             g = torch.Generator()
+292:             g.manual_seed(seed * 100003 + ep)
+293:             idx = torch.randperm(len(tr), generator=g)[:fixed_draws].tolist()
+294:             exposure[idx] += 1          # 仅计数，不参与 RNG / 顺序 / 训练
+295:             dl = DataLoader(tr, batch_size=bs, sampler=SubsetRandomSampler(idx),
+296:                             num_workers=num_workers, pin_memory=True, drop_last=False)
+297:             per_class = np.bincount([tr.items[i][1] for i in idx],
+298:                                     minlength=NUM_CLASSES).tolist()
+299:             synth_n = int(sum(1 for i in idx if tr.is_synth[i]))
+300:             epoch_stats.append({"epoch": ep, "drawn": len(idx), "per_class": per_class,
+301:                                 "real": len(idx) - synth_n, "synth": synth_n,
+302:                                 "batches": math.ceil(len(idx) / bs),
+303:                                 "last_batch": len(idx) % bs or bs})
+304:         else:
+305:             dl = dl_tr
+306:         for x, y in dl:
+307:             x, y = x.to(device), y.to(device)
+308:             opt.zero_grad(set_to_none=True)
+309:             loss = crit(model(x), y)
+310:             loss.backward(); opt.step()
+311:             opt_steps += 1
+312:             tot += loss.item() * len(y)
+313:         sched.step()
+314:         if ep % 5 == 0 or ep == epochs:
+315:             m, _, _ = evaluate(model, dl_va, device) if len(va) else ({"qwk": 0}, None, None)
+316:             if not quiet:
+317:                 print(f"      seed{seed} ep{ep:3d}  train_loss {tot/len(tr):.4f}  val_qwk {m['qwk']:.4f}")
+318:             if m["qwk"] > best["qwk"]:
+319:                 best = m
+320:                 best_ep = ep
+321:                 best_state = {k: v.detach().cpu().clone() for k, v in model.state_dict().items()}
+322: 
+323:     if best_state is not None:
+324:         model.load_state_dict(best_state)
+325: 
+326:     # ---- 逐图曝光记录（只有计数，不改抽样；A0 未用固定抽样则每轮全覆盖 = epochs）----
+327:     exposure_counts = exposure if use_fixed else np.full(len(tr), epochs, dtype=np.int64)
+328:     is_syn = np.asarray(tr.is_synth, dtype=bool)
+329:     def _exp_stat(a: np.ndarray):
+330:         if a.size == 0:
+331:             return None
+332:         return {"n": int(a.size), "mean": round(float(a.mean()), 4),
+333:                 "min": int(a.min()), "max": int(a.max()),
+334:                 "full": int((a == epochs).sum())}
+335:     items_meta = []
+336:     for i, (p, cls_i) in enumerate(tr.items):
+337:         try:
+338:             rel = p.relative_to(root).as_posix()
+339:         except ValueError:
+340:             rel = p.name
+341:         items_meta.append({"index": i, "file": rel, "class": CLASSES[cls_i],
+342:                            "is_synth": bool(is_syn[i]), "count": int(exposure_counts[i])})
+343:     exposure_rec = {
+344:         "note": ("fixed-draws 采样为确定性：generator 种子 = seed*100003 + epoch；"
+345:                  "A0 未用固定抽样，每轮全覆盖 → 每张均为 epochs 次"),
+346:         "summary": {"real": _exp_stat(exposure_counts[~is_syn]),
+347:                     "synth": _exp_stat(exposure_counts[is_syn]),
+348:                     "total_draws": int(exposure_counts.sum())},
+349:         "items": items_meta,
+350:     }
+351: 
+352:     extra = {"mode": "drc" if drc else ("logit_adjust" if logit_adjust else "a0"),
+353:              "deterministic_flag": bool(run_meta.get("deterministic_flag")) if run_meta else None,
+354:              "determinism": run_meta.get("determinism") if run_meta else None,
+355:              "train_n_real": n_real_train, "train_n_synth": n_synth_train,
+356:              "fixed_draws": fixed_draws, "optimizer_steps": opt_steps,
+357:              "best_epoch": best_ep, "weight_source": weight_source,
+358:              "class_weights_used": [float(v) for v in w.detach().cpu()] if w is not None else None,
+359:              "epoch_stats": epoch_stats if use_fixed else None,
+360:              "exposure": exposure_rec}
+361: 
+362:     # ---- A2：DRC 阶段2——冻结骨干，重初始化分类头，类别平衡采样 ----
+363:     if drc:
+364:         freeze_backbone_reset_head(model, device)
+365:         dl_bal = DataLoader(tr, batch_size=bs, sampler=make_balanced_sampler(tr.items),
+366:                             num_workers=num_workers, pin_memory=True, drop_last=False)
+367:         opt2 = torch.optim.AdamW(model.fc.parameters(), lr=drc_stage2_lr,
+368:                                  weight_decay=weight_decay)
+369:         crit2 = nn.CrossEntropyLoss()   # 采样已平衡，不再加权
+370:         best2 = {"qwk": -2.0}
+371:         best2_state = None
+372:         for ep in range(1, drc_stage2_epochs + 1):
+373:             model.train()
+374:             # 冻结 BN 统计：backbone 保持 eval，只让 fc 更新
+375:             for m_ in model.modules():
+376:                 if isinstance(m_, nn.BatchNorm2d):
+377:                     m_.eval()
+378:             tot = 0.0
+379:             for x, y in dl_bal:
+380:                 x, y = x.to(device), y.to(device)
+381:                 opt2.zero_grad(set_to_none=True)
+382:                 loss = crit2(model(x), y)
+383:                 loss.backward(); opt2.step()
+384:                 tot += loss.item() * len(y)
+385:             if len(va):
+386:                 m, _, _ = evaluate(model, dl_va, device)
+387:                 if not quiet:
+388:                     print(f"      seed{seed} drc-ep{ep:3d}  loss {tot/len(tr):.4f}  val_qwk {m['qwk']:.4f}")
+389:                 if m["qwk"] > best2["qwk"]:
+390:                     best2 = m
+391:                     best2_state = {k: v.detach().cpu().clone() for k, v in model.state_dict().items()}
+392:         if best2_state is not None:
+393:             model.load_state_dict(best2_state)
+394:         extra["drc_stage2_epochs"] = drc_stage2_epochs
+395:         extra["drc_stage2_lr"] = drc_stage2_lr
+396:         extra["drc_val_qwk"] = best2["qwk"]
+397: 
+398:     # ---- A1：post-hoc logit adjustment（tau 只在 val 上选）／测试集只评一次 ----
+399:     if logit_adjust:
+400:         prior = class_counts(tr.items) / class_counts(tr.items).sum()
+401:         if len(va):
+402:             y_va, z_va = collect_logits(model, dl_va, device)
+403:             tau, va_m = tune_tau(z_va, y_va, prior)
+404:             extra["tau"] = tau
+405:             extra["val_qwk_adjusted"] = va_m["qwk"]
+406:         else:
+407:             tau = 0.0
+408:             extra["tau"] = tau
+409:         y_true, z_raw = collect_logits(model, dl_te, device)
+410:         z_dec = apply_logit_adjust(z_raw, prior, tau)   # 决策用 logits
+411:         y_pred = z_dec.argmax(1)
+412:         te_m = metrics_from_preds(y_true, y_pred)
+413:         extra["prior"] = [float(v) for v in prior]
+414:     else:
+415:         y_true, z_dec = collect_logits(model, dl_te, device)
+416:         y_pred = z_dec.argmax(1)
+417:         te_m = metrics_from_preds(y_true, y_pred)
+418: 
+419:     if dump_dir is not None:
+420:         save_test_predictions(Path(dump_dir), arm, seed, root, te,
+421:                               y_true, y_pred, z_dec, extra)
+422: 
+423:     te_m["seed"] = seed
+424:     te_m["val_qwk"] = best["qwk"] if not drc else extra.get("drc_val_qwk", best["qwk"])
+425:     te_m["train_n"] = len(tr)
+426:     te_m["test_n"] = len(te)
+427:     te_m.update(extra)
+428:     return te_m
+429: 
+430: 
+431: def build_argparser() -> argparse.ArgumentParser:
+432:     ap = argparse.ArgumentParser(description="HR 分级分类器（分辨率消融）")
+433:     ap.add_argument("--data", required=True, help="正方形数据集根目录")
+434:     ap.add_argument("--size", type=int, required=True, help="输入分辨率")
+435:     ap.add_argument("--seeds", type=int, nargs="+", default=[42, 52, 62])
+436:     ap.add_argument("--epochs", type=int, default=30)
+437:     ap.add_argument("--batch-size", type=int, default=16)
+438:     ap.add_argument("--lr", type=float, default=1e-4)
+439:     ap.add_argument("--weight-decay", type=float, default=1e-4)
+440:     ap.add_argument("--no-weighted", action="store_true", help="不加类别权重")
+441:     ap.add_argument("--no-pretrained", action="store_true", help="不用 ImageNet 预训练")
+442:     ap.add_argument("--logit-adjust", action="store_true",
+443:                     help="A1：post-hoc logit adjustment，tau 只在 val 上选")
+444:     ap.add_argument("--drc", action="store_true",
+445:                     help="A2：DRC 两阶段（冻结骨干 + 类平衡重训分类头）")
+446:     ap.add_argument("--drc-stage2-epochs", type=int, default=10,
+447:                     help="DRC 阶段2 轮数（默认 10）")
+448:     ap.add_argument("--drc-stage2-lr", type=float, default=1e-3,
+449:                     help="DRC 阶段2 分类头学习率（默认 1e-3）")
+450:     ap.add_argument("--class-weights", default=None,
+451:                     help="冻结类别权重，逗号分隔 4 个数（顺序 normal,mild,moderate,severe）；"
+452:                          "不传 = 按当前训练集现算（旧行为）")
+453:     ap.add_argument("--fixed-draws", type=int, default=None,
+454:                     help="每个 epoch 固定无放回抽样多少张（用于三组等 optimizer steps）；"
+455:                          "不传 = 按训练池自然大小 shuffle（旧行为）")
+456:     ap.add_argument("--extra-train-severe-dir", default=None,
+457:                     help="追加到 train/severe 的合成图目录（DL-EX-032）；不传 = 不追加")
+458:     ap.add_argument("--deterministic", action="store_true",
+459:                     help="严格确定性模式（DL-EX-032）：use_deterministic_algorithms(True, "
+460:                          "warn_only=False) + cudnn.deterministic + 关 benchmark；"
+461:                          "建议同时在 shell 里 export CUBLAS_WORKSPACE_CONFIG=:4096:8；"
+462:                          "不传 = 旧行为不变")
+463:     ap.add_argument("--num-workers", type=int, default=4)
+464:     ap.add_argument("--out", default=None, help="结果 JSON 路径")
+465:     ap.add_argument("--dump-predictions", default=None,
+466:                     help="逐图落盘目录（bootstrap CI / 校准用；默认关闭）")
+467:     ap.add_argument("--arm-label", default=None,
+468:                     help="结果标签，默认按开关推断 A0/A1/A2")
+469:     ap.add_argument("--quiet", action="store_true")
+470:     return ap
+471: 
+472: 
+473: def main() -> int:
+474:     args = build_argparser().parse_args()
+475: 
+476:     # 必须在任何 CUDA 调用之前：环境变量 → 确定性开关 → 快照
+477:     cuda_was_init = bool(torch.cuda.is_initialized())   # is_initialized 不触发初始化
+478:     if args.deterministic:
+479:         enable_determinism()
+480:     det_state = determinism_state()
+481:     det_state["cuda_initialized_before_enable"] = cuda_was_init
+482:     run_meta = {"deterministic_flag": bool(args.deterministic), "determinism": det_state}
+483: 
+484:     root = Path(args.data)
+485:     if not root.is_dir():
+486:         print(f"错误：数据目录不存在 {root}\n先跑 prep_square.py", file=sys.stderr)
+487:         return 1
+488: 
+489:     device = "cuda" if torch.cuda.is_available() else "cpu"
+490:     weighted = not args.no_weighted
+491:     cw = [float(x) for x in args.class_weights.split(",")] if args.class_weights else None
+492:     if cw is not None and len(cw) != NUM_CLASSES:
+493:         print(f"错误：--class-weights 需要 {NUM_CLASSES} 个数（{CLASSES}）", file=sys.stderr)
+494:         return 1
+495:     arm = args.arm_label or ("A2" if args.drc else ("A1" if args.logit_adjust else "A0"))
+496:     dump_dir = Path(args.dump_predictions) if args.dump_predictions else None
+497: 
+498:     print(f"{'='*66}")
+499:     print(f"  分辨率 {args.size}×{args.size}   设备 {device}   种子 {args.seeds}")
+500:     print(f"  数据 {root}")
+501:     print(f"  确定性 {args.deterministic}  "
+502:           f"(det_algo={det_state['deterministic_algorithms']}  "
+503:           f"cudnn.det={det_state['cudnn_deterministic']}  "
+504:           f"bench={det_state['cudnn_benchmark']}  "
+505:           f"CUBLAS_WORKSPACE_CONFIG={det_state['cublas_workspace_config']})")
+506:     print(f"{'='*66}")
+507: 
+508:     runs = []
+509:     for s in args.seeds:
+510:         t0 = time.time()
+511:         try:
+512:             r = train_one(args.size, root, s, args.epochs, args.batch_size, args.lr,
+513:                           args.weight_decay, device, weighted, args.num_workers, args.quiet,
+514:                           logit_adjust=args.logit_adjust, drc=args.drc,
+515:                           drc_stage2_epochs=args.drc_stage2_epochs,
+516:                           drc_stage2_lr=args.drc_stage2_lr,
+517:                           dump_dir=dump_dir, arm=arm,
+518:                           class_weights=cw, fixed_draws=args.fixed_draws,
+519:                           extra_train_severe_dir=args.extra_train_severe_dir,
+520:                           run_meta=run_meta)
+521:         except RuntimeError as e:
+522:             if "out of memory" in str(e).lower():
+523:                 print(f"  seed{s} ❌ 显存不足，跳过")
+524:                 torch.cuda.empty_cache()
+525:                 continue
+526:             raise
+527:         runs.append(r)
+528:         print(f"  seed{s:<3d} → acc {r['acc']:.4f}  bAcc {r['balanced_acc']:.4f}  "
+529:               f"macroF1 {r['macro_f1']:.4f}  QWK {r['qwk']:.4f}  "
+530:               f"severe召回 {r['severe_recall']:.4f}   ({time.time()-t0:.0f}s)")
+531: 
+532:     if not runs:
+533:         print("  全部失败")
+534:         return 2
+535: 
+536:     def agg(k):
+537:         v = np.array([r[k] for r in runs], dtype=float)
+538:         return float(v.mean()), float(v.std())
+539: 
+540:     summary = {k: agg(k) for k in ("acc", "balanced_acc", "macro_f1", "qwk", "severe_recall")}
+541:     print(f"\n  ── 分辨率 {args.size} 汇总（{len(runs)} 个种子）──")
+542:     for k, (m, s) in summary.items():
+543:         print(f"     {k:16s} {m:.4f} ± {s:.4f}")
+544: 
+545:     if args.out:
+546:         Path(args.out).parent.mkdir(parents=True, exist_ok=True)
+547:         with open(args.out, "w", encoding="utf-8") as f:
+548:             json.dump({"size": args.size, "seeds": args.seeds, "weighted": weighted,
+549:                        "pretrained": not args.no_pretrained, "epochs": args.epochs,
+550:                        "logit_adjust": args.logit_adjust, "drc": args.drc,
+551:                        "drc_stage2_epochs": args.drc_stage2_epochs,
+552:                        "class_weights_arg": cw, "fixed_draws_arg": args.fixed_draws,
+553:                        "extra_train_severe_dir": args.extra_train_severe_dir,
+554:                        "deterministic_flag": bool(args.deterministic),
+555:                        "determinism": det_state,
+556:                        "summary": {k: {"mean": m, "std": s} for k, (m, s) in summary.items()},
+557:                        "runs": runs}, f, ensure_ascii=False, indent=2)
+558:         print(f"\n  已写 {args.out}")
+559:     return 0
+560: 
+561: 
+562: if __name__ == "__main__":
+563:     raise SystemExit(main())

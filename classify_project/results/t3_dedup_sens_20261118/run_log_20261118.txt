@@ -1,0 +1,42 @@
+tee: classify_project/results/t3_dedup_sens_20261118/run_log_20261118.txt: No such file or directory
+########## A0 ##########
+==================================================================
+  分辨率 256×256   设备 cuda   种子 [42, 52, 62]
+  数据 fundus\HRSG_4_758_sq256_dedup14
+  确定性 True  (det_algo=True  cudnn.det=True  bench=False  CUBLAS_WORKSPACE_CONFIG=:4096:8)
+  温度护栏 75.0°C (每 2 batch 查一次；0=关闭)
+==================================================================
+  seed42  → acc 0.6667  bAcc 0.6806  macroF1 0.6837  QWK 0.7662  severe召回 0.8333   (116s)
+  seed52  → acc 0.6667  bAcc 0.6736  macroF1 0.6808  QWK 0.6437  severe召回 0.7500   (165s)
+  seed62  → acc 0.6667  bAcc 0.6806  macroF1 0.6713  QWK 0.7502  severe召回 0.8333   (127s)
+
+  ── 分辨率 256 汇总（3 个种子）──
+     acc              0.6667 ± 0.0000
+     balanced_acc     0.6782 ± 0.0033
+     macro_f1         0.6786 ± 0.0053
+     qwk              0.7200 ± 0.0544
+     severe_recall    0.8056 ± 0.0393
+
+  已写 classify_project/results/t3_dedup_sens_20261118/A0_20261118.json
+########## A1 ##########
+==================================================================
+  分辨率 256×256   设备 cuda   种子 [42, 52, 62]
+  数据 fundus\HRSG_4_758_sq256_dedup14
+  确定性 True  (det_algo=True  cudnn.det=True  bench=False  CUBLAS_WORKSPACE_CONFIG=:4096:8)
+  温度护栏 75.0°C (每 2 batch 查一次；0=关闭)
+==================================================================
+  seed42  → acc 0.6667  bAcc 0.6806  macroF1 0.6772  QWK 0.7617  severe召回 0.8333   (142s)
+  seed52  → acc 0.7424  bAcc 0.7569  macroF1 0.7565  QWK 0.8221  severe召回 0.9167   (110s)
+  seed62  → acc 0.6818  bAcc 0.6944  macroF1 0.6948  QWK 0.7576  severe召回 0.8333   (126s)
+
+  ── 分辨率 256 汇总（3 个种子）──
+     acc              0.6970 ± 0.0327
+     balanced_acc     0.7106 ± 0.0332
+     macro_f1         0.7095 ± 0.0340
+     qwk              0.7805 ± 0.0295
+     severe_recall    0.8611 ± 0.0393
+
+  已写 classify_project/results/t3_dedup_sens_20261118/A1_20261118.json
+########## 完成 ##########
+
+[exited with code 1]

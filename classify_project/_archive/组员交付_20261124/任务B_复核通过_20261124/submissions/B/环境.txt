@@ -1,0 +1,5 @@
+Python 3.12.5
+numpy 2.4.4
+matplotlib 3.10.9
+运行：python submissions/B/analyze.py --input task_B_input/handoff_20261117_B --output submissions/B
+无需 torch，不导入或执行训练代码。

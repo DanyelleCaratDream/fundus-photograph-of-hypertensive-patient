@@ -1,0 +1,39 @@
+########## A0 ##########
+==================================================================
+  分辨率 256×256   设备 cuda   种子 [42, 52, 62]
+  数据 fundus\HRSG_4_758_sq256_dedup45
+  确定性 True  (det_algo=True  cudnn.det=True  bench=False  CUBLAS_WORKSPACE_CONFIG=:4096:8)
+  温度护栏 75.0°C (每 2 batch 查一次；0=关闭)
+==================================================================
+  seed42  → acc 0.6970  bAcc 0.7014  macroF1 0.7069  QWK 0.8169  severe召回 0.7500   (238s)
+  seed52  → acc 0.7273  bAcc 0.7361  macroF1 0.7432  QWK 0.7903  severe召回 0.8333   (172s)
+  seed62  → acc 0.7121  bAcc 0.7153  macroF1 0.7217  QWK 0.7979  severe召回 0.7500   (118s)
+
+  ── 分辨率 256 汇总（3 个种子）──
+     acc              0.7121 ± 0.0124
+     balanced_acc     0.7176 ± 0.0143
+     macro_f1         0.7239 ± 0.0149
+     qwk              0.8017 ± 0.0112
+     severe_recall    0.7778 ± 0.0393
+
+  已写 classify_project/results/t4_dedupB_20261125/A0_20261125.json
+########## A1 ##########
+==================================================================
+  分辨率 256×256   设备 cuda   种子 [42, 52, 62]
+  数据 fundus\HRSG_4_758_sq256_dedup45
+  确定性 True  (det_algo=True  cudnn.det=True  bench=False  CUBLAS_WORKSPACE_CONFIG=:4096:8)
+  温度护栏 75.0°C (每 2 batch 查一次；0=关闭)
+==================================================================
+  seed42  → acc 0.6515  bAcc 0.6667  macroF1 0.6659  QWK 0.7694  severe召回 0.8333   (111s)
+  seed52  → acc 0.6818  bAcc 0.6944  macroF1 0.6919  QWK 0.7937  severe召回 0.8333   (109s)
+  seed62  → acc 0.6970  bAcc 0.7153  macroF1 0.7034  QWK 0.8070  severe召回 0.9167   (183s)
+
+  ── 分辨率 256 汇总（3 个种子）──
+     acc              0.6768 ± 0.0189
+     balanced_acc     0.6921 ± 0.0199
+     macro_f1         0.6871 ± 0.0157
+     qwk              0.7901 ± 0.0156
+     severe_recall    0.8611 ± 0.0393
+
+  已写 classify_project/results/t4_dedupB_20261125/A1_20261125.json
+########## 完成 ##########

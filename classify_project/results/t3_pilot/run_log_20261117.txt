@@ -1,0 +1,55 @@
+########## A0 ##########
+==================================================================
+  分辨率 256×256   设备 cuda   种子 [42, 52, 62]
+  数据 fundus\HRSG_4_758_sq256
+  确定性 True  (det_algo=True  cudnn.det=True  bench=False  CUBLAS_WORKSPACE_CONFIG=:4096:8)
+==================================================================
+  seed42  → acc 0.6761  bAcc 0.6988  macroF1 0.6988  QWK 0.7594  severe召回 0.9231   (75s)
+  seed52  → acc 0.6056  bAcc 0.6187  macroF1 0.6162  QWK 0.7072  severe召回 0.7692   (104s)
+  seed62  → acc 0.7042  bAcc 0.7171  macroF1 0.7235  QWK 0.7149  severe召回 0.8462   (80s)
+
+  ── 分辨率 256 汇总（3 个种子）──
+     acc              0.6620 ± 0.0415
+     balanced_acc     0.6782 ± 0.0427
+     macro_f1         0.6795 ± 0.0459
+     qwk              0.7272 ± 0.0230
+     severe_recall    0.8462 ± 0.0628
+
+  已写 classify_project/results/t3_pilot/A0_20261117.json
+########## A1 ##########
+==================================================================
+  分辨率 256×256   设备 cuda   种子 [42, 52, 62]
+  数据 fundus\HRSG_4_758_sq256
+  确定性 True  (det_algo=True  cudnn.det=True  bench=False  CUBLAS_WORKSPACE_CONFIG=:4096:8)
+==================================================================
+  seed42  → acc 0.6761  bAcc 0.6960  macroF1 0.6995  QWK 0.8015  severe召回 0.9231   (76s)
+  seed52  → acc 0.6620  bAcc 0.6835  macroF1 0.6579  QWK 0.7482  severe召回 0.9231   (136s)
+  seed62  → acc 0.6901  bAcc 0.6993  macroF1 0.7091  QWK 0.7756  severe召回 0.7692   (164s)
+
+  ── 分辨率 256 汇总（3 个种子）──
+     acc              0.6761 ± 0.0115
+     balanced_acc     0.6929 ± 0.0068
+     macro_f1         0.6889 ± 0.0222
+     qwk              0.7751 ± 0.0218
+     severe_recall    0.8718 ± 0.0725
+
+  已写 classify_project/results/t3_pilot/A1_20261117.json
+########## A2 ##########
+==================================================================
+  分辨率 256×256   设备 cuda   种子 [42, 52, 62]
+  数据 fundus\HRSG_4_758_sq256
+  确定性 True  (det_algo=True  cudnn.det=True  bench=False  CUBLAS_WORKSPACE_CONFIG=:4096:8)
+==================================================================
+  seed42  → acc 0.6620  bAcc 0.6715  macroF1 0.6733  QWK 0.7023  severe召回 0.7692   (157s)
+  seed52  → acc 0.6620  bAcc 0.6835  macroF1 0.6789  QWK 0.7669  severe召回 0.9231   (125s)
+  seed62  → acc 0.7183  bAcc 0.7349  macroF1 0.7304  QWK 0.7911  severe召回 0.9231   (108s)
+
+  ── 分辨率 256 汇总（3 个种子）──
+     acc              0.6808 ± 0.0266
+     balanced_acc     0.6967 ± 0.0275
+     macro_f1         0.6942 ± 0.0257
+     qwk              0.7534 ± 0.0375
+     severe_recall    0.8718 ± 0.0725
+
+  已写 classify_project/results/t3_pilot/A2_20261117.json
+########## 完成 ##########

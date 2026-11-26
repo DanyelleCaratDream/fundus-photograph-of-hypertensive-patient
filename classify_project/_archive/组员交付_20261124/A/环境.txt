@@ -1,0 +1,16 @@
+记录日期：2026-11-21
+本文件由 submissions/A/recompute.py 在本次运行时写入。
+解释器：D:\新建文件夹\python.exe
+Python：3.13.13 (tags/v3.13.13:01104ce, Apr  7 2026, 19:25:48) [MSC v.1944 64 bit (AMD64)]
+numpy：2.4.4
+scikit-learn：1.8.0
+platform：Windows-11-10.0.26200-SP0
+随机数：numpy.random.Generator，BitGenerator 为 PCG64；百分位为 numpy.quantile method=linear。
+主 bootstrap：B=1000，seed=20261117。
+未使用 GPU，未导入 bootstrap_ci.py。
+运行命令：D:\新建文件夹\python.exe submissions/A/recompute.py --task all --self-check
+
+交接包 00_common/环境与版本.txt 记录的是生成预测时的训练环境：
+Python 3.13.13，numpy 2.4.4，scikit-learn 1.9.0。
+本次复算的 sklearn 版本以本文件上一节为准。点估计若与原 JSON 逐位一致，
+则该版本差没有改变这些指标的数值。

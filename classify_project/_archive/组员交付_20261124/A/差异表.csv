@@ -1,0 +1,451 @@
+task,item,arm,seed,metric,source_file,original,recomputed,difference,status,reason
+A1,per_seed[0],A0,42,qwk,01_A_pilot/pilot_ci_20261115.json,0.7755671253253997,0.7755671253253997,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[0],A0,42,balanced_acc,01_A_pilot/pilot_ci_20261115.json,0.6724358974358975,0.6724358974358975,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[0],A0,42,macro_f1,01_A_pilot/pilot_ci_20261115.json,0.6765755078255078,0.6765755078255078,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[0],A0,42,severe_recall,01_A_pilot/pilot_ci_20261115.json,0.9230769230769231,0.9230769230769231,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[0],A0,42,recall_normal,01_A_pilot/pilot_ci_20261115.json,0.6666666666666666,0.6666666666666666,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[0],A0,42,recall_mild,01_A_pilot/pilot_ci_20261115.json,0.65,0.65,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[0],A0,42,recall_moderate,01_A_pilot/pilot_ci_20261115.json,0.45,0.45,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[0],A0,42,recall_severe,01_A_pilot/pilot_ci_20261115.json,0.9230769230769231,0.9230769230769231,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,confusion_per_seed[0],A0,42,confusion,01_A_pilot/pilot_ci_20261115.json,"[[12, 6, 0, 0], [1, 13, 6, 0], [2, 8, 9, 1], [0, 1, 0, 12]]","[[12, 6, 0, 0], [1, 13, 6, 0], [2, 8, 9, 1], [0, 1, 0, 12]]",,一致,逐格相等。
+A1,per_seed[1],A0,52,qwk,01_A_pilot/pilot_ci_20261115.json,0.7288006111535523,0.7288006111535523,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[1],A0,52,balanced_acc,01_A_pilot/pilot_ci_20261115.json,0.6240384615384615,0.6240384615384615,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[1],A0,52,macro_f1,01_A_pilot/pilot_ci_20261115.json,0.6221426423039327,0.6221426423039327,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[1],A0,52,severe_recall,01_A_pilot/pilot_ci_20261115.json,0.8461538461538461,0.8461538461538461,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[1],A0,52,recall_normal,01_A_pilot/pilot_ci_20261115.json,0.5,0.5,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[1],A0,52,recall_mild,01_A_pilot/pilot_ci_20261115.json,0.75,0.75,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[1],A0,52,recall_moderate,01_A_pilot/pilot_ci_20261115.json,0.4,0.4,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[1],A0,52,recall_severe,01_A_pilot/pilot_ci_20261115.json,0.8461538461538461,0.8461538461538461,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,confusion_per_seed[1],A0,52,confusion,01_A_pilot/pilot_ci_20261115.json,"[[9, 7, 2, 0], [3, 15, 2, 0], [1, 9, 8, 2], [0, 1, 1, 11]]","[[9, 7, 2, 0], [3, 15, 2, 0], [1, 9, 8, 2], [0, 1, 1, 11]]",,一致,逐格相等。
+A1,per_seed[2],A0,62,qwk,01_A_pilot/pilot_ci_20261115.json,0.7517482517482518,0.7517482517482518,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[2],A0,62,balanced_acc,01_A_pilot/pilot_ci_20261115.json,0.6907051282051282,0.6907051282051282,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[2],A0,62,macro_f1,01_A_pilot/pilot_ci_20261115.json,0.6956327756327756,0.6956327756327756,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[2],A0,62,severe_recall,01_A_pilot/pilot_ci_20261115.json,0.8461538461538461,0.8461538461538461,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[2],A0,62,recall_normal,01_A_pilot/pilot_ci_20261115.json,0.6666666666666666,0.6666666666666666,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[2],A0,62,recall_mild,01_A_pilot/pilot_ci_20261115.json,0.7,0.7,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[2],A0,62,recall_moderate,01_A_pilot/pilot_ci_20261115.json,0.55,0.55,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[2],A0,62,recall_severe,01_A_pilot/pilot_ci_20261115.json,0.8461538461538461,0.8461538461538461,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,confusion_per_seed[2],A0,62,confusion,01_A_pilot/pilot_ci_20261115.json,"[[12, 4, 2, 0], [3, 14, 3, 0], [2, 6, 11, 1], [0, 1, 1, 11]]","[[12, 4, 2, 0], [3, 14, 3, 0], [2, 6, 11, 1], [0, 1, 1, 11]]",,一致,逐格相等。
+A1,three_seed_mean,A0,mean,qwk,01_A_pilot/pilot_ci_20261115.json,0.7520386627424013,0.7520386627424013,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,three_seed_mean,A0,mean,balanced_acc,01_A_pilot/pilot_ci_20261115.json,0.6623931623931624,0.6623931623931624,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,three_seed_mean,A0,mean,macro_f1,01_A_pilot/pilot_ci_20261115.json,0.6647836419207387,0.6647836419207387,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,three_seed_mean,A0,mean,severe_recall,01_A_pilot/pilot_ci_20261115.json,0.8717948717948718,0.8717948717948718,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,three_seed_mean,A0,mean,recall_normal,01_A_pilot/pilot_ci_20261115.json,0.611111111111111,0.611111111111111,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,three_seed_mean,A0,mean,recall_mild,01_A_pilot/pilot_ci_20261115.json,0.6999999999999998,0.6999999999999998,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,three_seed_mean,A0,mean,recall_moderate,01_A_pilot/pilot_ci_20261115.json,0.46666666666666673,0.46666666666666673,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,three_seed_mean,A0,mean,recall_severe,01_A_pilot/pilot_ci_20261115.json,0.8717948717948718,0.8717948717948718,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[0],A1,42,qwk,01_A_pilot/pilot_ci_20261115.json,0.7324288675334464,0.7324288675334464,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[0],A1,42,balanced_acc,01_A_pilot/pilot_ci_20261115.json,0.6964743589743589,0.6964743589743589,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[0],A1,42,macro_f1,01_A_pilot/pilot_ci_20261115.json,0.705258467023173,0.705258467023173,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[0],A1,42,severe_recall,01_A_pilot/pilot_ci_20261115.json,0.7692307692307693,0.7692307692307693,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[0],A1,42,recall_normal,01_A_pilot/pilot_ci_20261115.json,0.6666666666666666,0.6666666666666666,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[0],A1,42,recall_mild,01_A_pilot/pilot_ci_20261115.json,0.75,0.75,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[0],A1,42,recall_moderate,01_A_pilot/pilot_ci_20261115.json,0.6,0.6,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[0],A1,42,recall_severe,01_A_pilot/pilot_ci_20261115.json,0.7692307692307693,0.7692307692307693,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,confusion_per_seed[0],A1,42,confusion,01_A_pilot/pilot_ci_20261115.json,"[[12, 3, 3, 0], [2, 15, 3, 0], [2, 5, 12, 1], [0, 1, 2, 10]]","[[12, 3, 3, 0], [2, 15, 3, 0], [2, 5, 12, 1], [0, 1, 2, 10]]",,一致,逐格相等。
+A1,per_seed[1],A1,52,qwk,01_A_pilot/pilot_ci_20261115.json,0.7579471113977703,0.7579471113977703,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[1],A1,52,balanced_acc,01_A_pilot/pilot_ci_20261115.json,0.7032051282051281,0.7032051282051281,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[1],A1,52,macro_f1,01_A_pilot/pilot_ci_20261115.json,0.6978420738924941,0.6978420738924941,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[1],A1,52,severe_recall,01_A_pilot/pilot_ci_20261115.json,0.8461538461538461,0.8461538461538461,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[1],A1,52,recall_normal,01_A_pilot/pilot_ci_20261115.json,0.6666666666666666,0.6666666666666666,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[1],A1,52,recall_mild,01_A_pilot/pilot_ci_20261115.json,0.85,0.85,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[1],A1,52,recall_moderate,01_A_pilot/pilot_ci_20261115.json,0.45,0.45,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[1],A1,52,recall_severe,01_A_pilot/pilot_ci_20261115.json,0.8461538461538461,0.8461538461538461,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,confusion_per_seed[1],A1,52,confusion,01_A_pilot/pilot_ci_20261115.json,"[[12, 4, 2, 0], [2, 17, 1, 0], [2, 7, 9, 2], [0, 1, 1, 11]]","[[12, 4, 2, 0], [2, 17, 1, 0], [2, 7, 9, 2], [0, 1, 1, 11]]",,一致,逐格相等。
+A1,per_seed[2],A1,62,qwk,01_A_pilot/pilot_ci_20261115.json,0.7656310679611651,0.7656310679611651,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[2],A1,62,balanced_acc,01_A_pilot/pilot_ci_20261115.json,0.6643162393162394,0.6643162393162394,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[2],A1,62,macro_f1,01_A_pilot/pilot_ci_20261115.json,0.669574872277246,0.669574872277246,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[2],A1,62,severe_recall,01_A_pilot/pilot_ci_20261115.json,0.8461538461538461,0.8461538461538461,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[2],A1,62,recall_normal,01_A_pilot/pilot_ci_20261115.json,0.6111111111111112,0.6111111111111112,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[2],A1,62,recall_mild,01_A_pilot/pilot_ci_20261115.json,0.8,0.8,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[2],A1,62,recall_moderate,01_A_pilot/pilot_ci_20261115.json,0.4,0.4,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[2],A1,62,recall_severe,01_A_pilot/pilot_ci_20261115.json,0.8461538461538461,0.8461538461538461,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,confusion_per_seed[2],A1,62,confusion,01_A_pilot/pilot_ci_20261115.json,"[[11, 6, 1, 0], [1, 16, 3, 0], [1, 10, 8, 1], [0, 1, 1, 11]]","[[11, 6, 1, 0], [1, 16, 3, 0], [1, 10, 8, 1], [0, 1, 1, 11]]",,一致,逐格相等。
+A1,three_seed_mean,A1,mean,qwk,01_A_pilot/pilot_ci_20261115.json,0.7520023489641273,0.7520023489641273,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,three_seed_mean,A1,mean,balanced_acc,01_A_pilot/pilot_ci_20261115.json,0.6879985754985755,0.6879985754985755,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,three_seed_mean,A1,mean,macro_f1,01_A_pilot/pilot_ci_20261115.json,0.6908918043976376,0.6908918043976376,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,three_seed_mean,A1,mean,severe_recall,01_A_pilot/pilot_ci_20261115.json,0.8205128205128206,0.8205128205128206,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,three_seed_mean,A1,mean,recall_normal,01_A_pilot/pilot_ci_20261115.json,0.6481481481481481,0.6481481481481481,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,three_seed_mean,A1,mean,recall_mild,01_A_pilot/pilot_ci_20261115.json,0.8000000000000002,0.8000000000000002,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,three_seed_mean,A1,mean,recall_moderate,01_A_pilot/pilot_ci_20261115.json,0.4833333333333334,0.4833333333333334,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,three_seed_mean,A1,mean,recall_severe,01_A_pilot/pilot_ci_20261115.json,0.8205128205128206,0.8205128205128206,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[0],A2,42,qwk,01_A_pilot/pilot_ci_20261115.json,0.7567616300036062,0.7567616300036062,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[0],A2,42,balanced_acc,01_A_pilot/pilot_ci_20261115.json,0.6920940170940171,0.6920940170940171,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[0],A2,42,macro_f1,01_A_pilot/pilot_ci_20261115.json,0.6940883740883741,0.6940883740883741,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[0],A2,42,severe_recall,01_A_pilot/pilot_ci_20261115.json,0.8461538461538461,0.8461538461538461,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[0],A2,42,recall_normal,01_A_pilot/pilot_ci_20261115.json,0.7222222222222222,0.7222222222222222,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[0],A2,42,recall_mild,01_A_pilot/pilot_ci_20261115.json,0.7,0.7,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[0],A2,42,recall_moderate,01_A_pilot/pilot_ci_20261115.json,0.5,0.5,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[0],A2,42,recall_severe,01_A_pilot/pilot_ci_20261115.json,0.8461538461538461,0.8461538461538461,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,confusion_per_seed[0],A2,42,confusion,01_A_pilot/pilot_ci_20261115.json,"[[13, 4, 1, 0], [3, 14, 3, 0], [3, 6, 10, 1], [0, 1, 1, 11]]","[[13, 4, 1, 0], [3, 14, 3, 0], [3, 6, 10, 1], [0, 1, 1, 11]]",,一致,逐格相等。
+A1,per_seed[1],A2,52,qwk,01_A_pilot/pilot_ci_20261115.json,0.7537409572886731,0.7537409572886731,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[1],A2,52,balanced_acc,01_A_pilot/pilot_ci_20261115.json,0.6811965811965812,0.6811965811965812,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[1],A2,52,macro_f1,01_A_pilot/pilot_ci_20261115.json,0.6921114599686028,0.6921114599686028,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[1],A2,52,severe_recall,01_A_pilot/pilot_ci_20261115.json,0.7692307692307693,0.7692307692307693,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[1],A2,52,recall_normal,01_A_pilot/pilot_ci_20261115.json,0.5555555555555556,0.5555555555555556,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[1],A2,52,recall_mild,01_A_pilot/pilot_ci_20261115.json,0.8,0.8,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[1],A2,52,recall_moderate,01_A_pilot/pilot_ci_20261115.json,0.6,0.6,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[1],A2,52,recall_severe,01_A_pilot/pilot_ci_20261115.json,0.7692307692307693,0.7692307692307693,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,confusion_per_seed[1],A2,52,confusion,01_A_pilot/pilot_ci_20261115.json,"[[10, 6, 2, 0], [1, 16, 3, 0], [1, 6, 12, 1], [0, 1, 2, 10]]","[[10, 6, 2, 0], [1, 16, 3, 0], [1, 6, 12, 1], [0, 1, 2, 10]]",,一致,逐格相等。
+A1,per_seed[2],A2,62,qwk,01_A_pilot/pilot_ci_20261115.json,0.7812344697346189,0.7812344697346189,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[2],A2,62,balanced_acc,01_A_pilot/pilot_ci_20261115.json,0.6629273504273504,0.6629273504273504,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[2],A2,62,macro_f1,01_A_pilot/pilot_ci_20261115.json,0.6674682593343851,0.6674682593343851,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[2],A2,62,severe_recall,01_A_pilot/pilot_ci_20261115.json,0.8461538461538461,0.8461538461538461,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[2],A2,62,recall_normal,01_A_pilot/pilot_ci_20261115.json,0.5555555555555556,0.5555555555555556,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[2],A2,62,recall_mild,01_A_pilot/pilot_ci_20261115.json,0.85,0.85,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[2],A2,62,recall_moderate,01_A_pilot/pilot_ci_20261115.json,0.4,0.4,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,per_seed[2],A2,62,recall_severe,01_A_pilot/pilot_ci_20261115.json,0.8461538461538461,0.8461538461538461,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,confusion_per_seed[2],A2,62,confusion,01_A_pilot/pilot_ci_20261115.json,"[[10, 6, 2, 0], [1, 17, 2, 0], [0, 11, 8, 1], [0, 0, 2, 11]]","[[10, 6, 2, 0], [1, 17, 2, 0], [0, 11, 8, 1], [0, 0, 2, 11]]",,一致,逐格相等。
+A1,three_seed_mean,A2,mean,qwk,01_A_pilot/pilot_ci_20261115.json,0.7639123523422994,0.7639123523422994,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,three_seed_mean,A2,mean,balanced_acc,01_A_pilot/pilot_ci_20261115.json,0.6787393162393163,0.6787393162393163,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,three_seed_mean,A2,mean,macro_f1,01_A_pilot/pilot_ci_20261115.json,0.6845560311304539,0.6845560311304539,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,three_seed_mean,A2,mean,severe_recall,01_A_pilot/pilot_ci_20261115.json,0.8205128205128206,0.8205128205128206,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,three_seed_mean,A2,mean,recall_normal,01_A_pilot/pilot_ci_20261115.json,0.611111111111111,0.611111111111111,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,three_seed_mean,A2,mean,recall_mild,01_A_pilot/pilot_ci_20261115.json,0.7833333333333333,0.7833333333333333,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,three_seed_mean,A2,mean,recall_moderate,01_A_pilot/pilot_ci_20261115.json,0.5,0.5,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,three_seed_mean,A2,mean,recall_severe,01_A_pilot/pilot_ci_20261115.json,0.8205128205128206,0.8205128205128206,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,baseline_rerun_4dp,A0,mean,qwk,01_A_pilot/baseline_numbers.md,0.752,0.752,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,baseline_rerun_4dp,A1,mean,qwk,01_A_pilot/baseline_numbers.md,0.752,0.752,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,baseline_rerun_4dp,A2,mean,qwk,01_A_pilot/baseline_numbers.md,0.7639,0.7639,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,baseline_delta_4dp,A1,merged,qwk,01_A_pilot/baseline_numbers.md,0.0,-0.0,-0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,published_paired_point,A1,merged,qwk,01_A_pilot/pilot_ci_20261115.json,-3.631377827395532e-05,-3.631377827395532e-05,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,published_ci_vs_primary_seed_20261117,A1,merged,qwk_ci_low,01_A_pilot/pilot_ci_20261115.json,-0.05692989317455118,-0.05670914627873554,0.00022074689581564472,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_ci_vs_primary_seed_20261117,A1,merged,qwk_ci_high,01_A_pilot/pilot_ci_20261115.json,0.0536478542274508,0.05635902196753105,0.0027111677400802475,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_paired_point,A1,merged,balanced_acc,01_A_pilot/pilot_ci_20261115.json,0.02560541310541309,0.02560541310541309,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,published_ci_vs_primary_seed_20261117,A1,merged,balanced_acc_ci_low,01_A_pilot/pilot_ci_20261115.json,-0.025181623931624136,-0.02440081908831926,0.0007808048433048768,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_ci_vs_primary_seed_20261117,A1,merged,balanced_acc_ci_high,01_A_pilot/pilot_ci_20261115.json,0.07732995014245016,0.07561520655270647,-0.0017147435897436891,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_paired_point,A1,merged,macro_f1,01_A_pilot/pilot_ci_20261115.json,0.026108162476898955,0.026108162476898955,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,published_ci_vs_primary_seed_20261117,A1,merged,macro_f1_ci_low,01_A_pilot/pilot_ci_20261115.json,-0.025268168420944218,-0.024867440623775404,0.0004007277971688136,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_ci_vs_primary_seed_20261117,A1,merged,macro_f1_ci_high,01_A_pilot/pilot_ci_20261115.json,0.07800169273443279,0.07628677419917139,-0.0017149185352614005,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_paired_point,A1,merged,severe_recall,01_A_pilot/pilot_ci_20261115.json,-0.05128205128205121,-0.05128205128205121,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,published_ci_vs_primary_seed_20261117,A1,merged,severe_recall_ci_low,01_A_pilot/pilot_ci_20261115.json,-0.1282051282051282,-0.1282051282051282,0.0,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_ci_vs_primary_seed_20261117,A1,merged,severe_recall_ci_high,01_A_pilot/pilot_ci_20261115.json,0.0,0.0,0.0,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_paired_point,A1,merged,recall_normal,01_A_pilot/pilot_ci_20261115.json,0.03703703703703709,0.03703703703703709,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,published_ci_vs_primary_seed_20261117,A1,merged,recall_normal_ci_low,01_A_pilot/pilot_ci_20261115.json,-0.05555555555555558,-0.05555555555555547,1.1102230246251565e-16,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_ci_vs_primary_seed_20261117,A1,merged,recall_normal_ci_high,01_A_pilot/pilot_ci_20261115.json,0.11111111111111116,0.12962962962962954,0.01851851851851838,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_paired_point,A1,merged,recall_mild,01_A_pilot/pilot_ci_20261115.json,0.10000000000000031,0.10000000000000031,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,published_ci_vs_primary_seed_20261117,A1,merged,recall_mild_ci_low,01_A_pilot/pilot_ci_20261115.json,0.0,0.0,0.0,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_ci_vs_primary_seed_20261117,A1,merged,recall_mild_ci_high,01_A_pilot/pilot_ci_20261115.json,0.20000000000000007,0.20000000000000007,0.0,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_paired_point,A1,merged,recall_moderate,01_A_pilot/pilot_ci_20261115.json,0.016666666666666663,0.016666666666666663,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,published_ci_vs_primary_seed_20261117,A1,merged,recall_moderate_ci_low,01_A_pilot/pilot_ci_20261115.json,-0.1166666666666667,-0.11666666666666664,5.551115123125783e-17,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_ci_vs_primary_seed_20261117,A1,merged,recall_moderate_ci_high,01_A_pilot/pilot_ci_20261115.json,0.15041666666666637,0.14999999999999997,-0.00041666666666639873,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_paired_point,A1,merged,recall_severe,01_A_pilot/pilot_ci_20261115.json,-0.05128205128205121,-0.05128205128205121,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,published_ci_vs_primary_seed_20261117,A1,merged,recall_severe_ci_low,01_A_pilot/pilot_ci_20261115.json,-0.1282051282051282,-0.1282051282051282,0.0,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_ci_vs_primary_seed_20261117,A1,merged,recall_severe_ci_high,01_A_pilot/pilot_ci_20261115.json,0.0,0.0,0.0,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,baseline_ci_4dp_vs_primary,A1,merged,qwk_ci_low,01_A_pilot/baseline_numbers.md,-0.0569,-0.0567,0.0001999999999999988,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,baseline_ci_4dp_vs_primary,A1,merged,qwk_ci_high,01_A_pilot/baseline_numbers.md,0.0536,0.0564,0.002799999999999997,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,baseline_delta_4dp,A2,merged,qwk,01_A_pilot/baseline_numbers.md,0.0119,0.0119,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,published_paired_point,A2,merged,qwk,01_A_pilot/pilot_ci_20261115.json,0.011873689599898096,0.011873689599898096,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,published_ci_vs_primary_seed_20261117,A2,merged,qwk_ci_low,01_A_pilot/pilot_ci_20261115.json,-0.036098189080939654,-0.0386728100891405,-0.002574621008200849,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_ci_vs_primary_seed_20261117,A2,merged,qwk_ci_high,01_A_pilot/pilot_ci_20261115.json,0.06357170791066477,0.06641920630950007,0.002847498398835302,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_paired_point,A2,merged,balanced_acc,01_A_pilot/pilot_ci_20261115.json,0.0163461538461539,0.0163461538461539,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,published_ci_vs_primary_seed_20261117,A2,merged,balanced_acc_ci_low,01_A_pilot/pilot_ci_20261115.json,-0.028035078347578284,-0.02774928774928772,0.00028579059829056397,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_ci_vs_primary_seed_20261117,A2,merged,balanced_acc_ci_high,01_A_pilot/pilot_ci_20261115.json,0.06214120370370371,0.06071937321937326,-0.0014218304843304497,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_paired_point,A2,merged,macro_f1,01_A_pilot/pilot_ci_20261115.json,0.019772389209715246,0.019772389209715246,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,published_ci_vs_primary_seed_20261117,A2,merged,macro_f1_ci_low,01_A_pilot/pilot_ci_20261115.json,-0.026839132595800022,-0.027861867347322933,-0.0010227347515229107,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_ci_vs_primary_seed_20261117,A2,merged,macro_f1_ci_high,01_A_pilot/pilot_ci_20261115.json,0.0688499051323692,0.06773289653535221,-0.001117008597016994,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_paired_point,A2,merged,severe_recall,01_A_pilot/pilot_ci_20261115.json,-0.05128205128205121,-0.05128205128205121,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,published_ci_vs_primary_seed_20261117,A2,merged,severe_recall_ci_low,01_A_pilot/pilot_ci_20261115.json,-0.1282051282051282,-0.1282051282051282,0.0,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_ci_vs_primary_seed_20261117,A2,merged,severe_recall_ci_high,01_A_pilot/pilot_ci_20261115.json,0.0,0.0,0.0,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_paired_point,A2,merged,recall_normal,01_A_pilot/pilot_ci_20261115.json,0.0,0.0,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,published_ci_vs_primary_seed_20261117,A2,merged,recall_normal_ci_low,01_A_pilot/pilot_ci_20261115.json,-0.07407407407407407,-0.07407407407407407,0.0,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_ci_vs_primary_seed_20261117,A2,merged,recall_normal_ci_high,01_A_pilot/pilot_ci_20261115.json,0.07407407407407407,0.07407407407407413,5.551115123125783e-17,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_paired_point,A2,merged,recall_mild,01_A_pilot/pilot_ci_20261115.json,0.08333333333333348,0.08333333333333348,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,published_ci_vs_primary_seed_20261117,A2,merged,recall_mild_ci_low,01_A_pilot/pilot_ci_20261115.json,-0.016666666666666607,-0.016666666666666607,0.0,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_ci_vs_primary_seed_20261117,A2,merged,recall_mild_ci_high,01_A_pilot/pilot_ci_20261115.json,0.18333333333333335,0.18333333333333335,0.0,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_paired_point,A2,merged,recall_moderate,01_A_pilot/pilot_ci_20261115.json,0.03333333333333327,0.03333333333333327,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,published_ci_vs_primary_seed_20261117,A2,merged,recall_moderate_ci_low,01_A_pilot/pilot_ci_20261115.json,-0.08333333333333331,-0.08333333333333331,0.0,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_ci_vs_primary_seed_20261117,A2,merged,recall_moderate_ci_high,01_A_pilot/pilot_ci_20261115.json,0.15000000000000008,0.15000000000000008,0.0,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_paired_point,A2,merged,recall_severe,01_A_pilot/pilot_ci_20261115.json,-0.05128205128205121,-0.05128205128205121,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A1,published_ci_vs_primary_seed_20261117,A2,merged,recall_severe_ci_low,01_A_pilot/pilot_ci_20261115.json,-0.1282051282051282,-0.1282051282051282,0.0,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,published_ci_vs_primary_seed_20261117,A2,merged,recall_severe_ci_high,01_A_pilot/pilot_ci_20261115.json,0.0,0.0,0.0,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,baseline_ci_4dp_vs_primary,A2,merged,qwk_ci_low,01_A_pilot/baseline_numbers.md,-0.0361,-0.0387,-0.002599999999999998,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,baseline_ci_4dp_vs_primary,A2,merged,qwk_ci_high,01_A_pilot/baseline_numbers.md,0.0636,0.0664,0.002799999999999997,实现差异,点估计另项核对，且与原 JSON 在 1e-9 以内一致。本行只比较百分位端点。原 CI 记录 seed=20261115；用同一分层配对算法、Generator 与 RandomState 在该种子下都没有复现端点，换 numpy 的十种百分位插值后最小端点差仍见 quantile_method_gaps。因此端点差来自未能复现的重抽样随机数流，不是点估计错误。本报告主区间固定为 Generator、seed=20261117、B=1000、linear，不改算法去贴合原端点。
+A1,main_20261112,A0,none,qwk,01_A_pilot/baseline_numbers.md,0.7564,,,不可复算,2026-11-12 主结果没有逐图预测，不能从 logits 重算。
+A1,main_minus_rerun_4dp_arithmetic,A0,mean,qwk,01_A_pilot/baseline_numbers.md,-0.0044,-0.0043999999999999595,4.0766001685454967e-17,一致,只核对已公布的四位小数之差。2026-11-12 的 QWK 没有逐图预测，这个差值不是从 logits 重算得到的。
+A1,main_20261112,A1,none,qwk,01_A_pilot/baseline_numbers.md,0.7689,,,不可复算,2026-11-12 主结果没有逐图预测，不能从 logits 重算。
+A1,main_minus_rerun_4dp_arithmetic,A1,mean,qwk,01_A_pilot/baseline_numbers.md,-0.0169,-0.016900000000000026,-2.7755575615628914e-17,一致,只核对已公布的四位小数之差。2026-11-12 的 QWK 没有逐图预测，这个差值不是从 logits 重算得到的。
+A1,main_20261112,A2,none,qwk,01_A_pilot/baseline_numbers.md,0.7659,,,不可复算,2026-11-12 主结果没有逐图预测，不能从 logits 重算。
+A1,main_minus_rerun_4dp_arithmetic,A2,mean,qwk,01_A_pilot/baseline_numbers.md,-0.002,-0.0020000000000000018,-1.734723475976807e-18,一致,只核对已公布的四位小数之差。2026-11-12 的 QWK 没有逐图预测，这个差值不是从 logits 重算得到的。
+A2,run_json_vs_predictions,A0,42,acc,02_A_t3/t3_runs/A0_20261117.json,0.676056338028169,0.676056338028169,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A0,42,balanced_acc,02_A_t3/t3_runs/A0_20261117.json,0.6988247863247863,0.6988247863247863,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A0,42,macro_f1,02_A_t3/t3_runs/A0_20261117.json,0.6988247863247863,0.6988247863247863,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A0,42,qwk,02_A_t3/t3_runs/A0_20261117.json,0.7593649661077417,0.7593649661077417,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A0,42,severe_recall,02_A_t3/t3_runs/A0_20261117.json,0.9230769230769231,0.9230769230769231,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A0,42,confusion,02_A_t3/t3_runs/A0_20261117.json,"[[13, 3, 2, 0], [2, 12, 6, 0], [3, 5, 11, 1], [0, 0, 1, 12]]","[[13, 3, 2, 0], [2, 12, 6, 0], [3, 5, 11, 1], [0, 0, 1, 12]]",,一致,逐格相等。
+A2,run_json_vs_predictions,A0,52,acc,02_A_t3/t3_runs/A0_20261117.json,0.6056338028169014,0.6056338028169014,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A0,52,balanced_acc,02_A_t3/t3_runs/A0_20261117.json,0.6186965811965812,0.6186965811965812,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A0,52,macro_f1,02_A_t3/t3_runs/A0_20261117.json,0.6161567599067599,0.6161567599067599,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A0,52,qwk,02_A_t3/t3_runs/A0_20261117.json,0.7072024551644769,0.7072024551644769,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A0,52,severe_recall,02_A_t3/t3_runs/A0_20261117.json,0.7692307692307693,0.7692307692307693,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A0,52,confusion,02_A_t3/t3_runs/A0_20261117.json,"[[10, 7, 1, 0], [1, 16, 3, 0], [3, 8, 7, 2], [0, 1, 2, 10]]","[[10, 7, 1, 0], [1, 16, 3, 0], [3, 8, 7, 2], [0, 1, 2, 10]]",,一致,逐格相等。
+A2,run_json_vs_predictions,A0,62,acc,02_A_t3/t3_runs/A0_20261117.json,0.704225352112676,0.704225352112676,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A0,62,balanced_acc,02_A_t3/t3_runs/A0_20261117.json,0.7170940170940171,0.7170940170940171,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A0,62,macro_f1,02_A_t3/t3_runs/A0_20261117.json,0.7235437430786267,0.7235437430786267,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A0,62,qwk,02_A_t3/t3_runs/A0_20261117.json,0.7149114801971163,0.7149114801971163,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A0,62,severe_recall,02_A_t3/t3_runs/A0_20261117.json,0.8461538461538461,0.8461538461538461,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A0,62,confusion,02_A_t3/t3_runs/A0_20261117.json,"[[13, 2, 3, 0], [1, 13, 6, 0], [2, 4, 13, 1], [1, 0, 1, 11]]","[[13, 2, 3, 0], [1, 13, 6, 0], [2, 4, 13, 1], [1, 0, 1, 11]]",,一致,逐格相等。
+A2,summary_mean,A0,mean,acc,02_A_t3/t3_runs/A0_20261117.json,0.6619718309859155,0.6619718309859155,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,summary_std,A0,std,acc,02_A_t3/t3_runs/A0_20261117.json,0.04146366603909787,0.04146366603909787,0.0,一致,与三个 seed 的总体标准差（除以 n）一致。
+A2,summary_mean,A0,mean,balanced_acc,02_A_t3/t3_runs/A0_20261117.json,0.6782051282051281,0.6782051282051281,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,summary_std,A0,std,balanced_acc,02_A_t3/t3_runs/A0_20261117.json,0.04273477564019095,0.04273477564019095,0.0,一致,与三个 seed 的总体标准差（除以 n）一致。
+A2,summary_mean,A0,mean,macro_f1,02_A_t3/t3_runs/A0_20261117.json,0.6795084297700577,0.6795084297700577,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,summary_std,A0,std,macro_f1,02_A_t3/t3_runs/A0_20261117.json,0.045919003049578196,0.045919003049578196,0.0,一致,与三个 seed 的总体标准差（除以 n）一致。
+A2,summary_mean,A0,mean,qwk,02_A_t3/t3_runs/A0_20261117.json,0.7271596338231117,0.7271596338231117,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,summary_std,A0,std,qwk,02_A_t3/t3_runs/A0_20261117.json,0.022989053009509316,0.022989053009509316,0.0,一致,与三个 seed 的总体标准差（除以 n）一致。
+A2,summary_mean,A0,mean,severe_recall,02_A_t3/t3_runs/A0_20261117.json,0.8461538461538463,0.8461538461538463,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,summary_std,A0,std,severe_recall,02_A_t3/t3_runs/A0_20261117.json,0.06280742930213278,0.06280742930213278,0.0,一致,与三个 seed 的总体标准差（除以 n）一致。
+A2,training_record,A0,42,optimizer_steps,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,1050,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,42,n_epoch_stats,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"""epoch_stats is null""",,不可核对,A0 的 epoch_stats 为 null，逐轮 batches 与 last_batch 没有记录。逐图曝光另行核对：552 张真实图各 30 次，合计与 summary.total_draws 相同。
+A2,training_record,A0,42,test_n,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""test_n"": 71, ""n"": 71}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,42,class_weights_equal_float32_documented,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""used"": [1.149999976158142, 0.9857140183448792, 0.9857140183448792, 0.907895028591156], ""max_abs_vs_unrounded_float32"": 2.980232238769531e-07, ""note"": ""stored vector is float32 of the documented 6-decimal weights, not float32 of the unrounded n/(4*n_c)""}",,一致,九次 run 的权重都等于文档六位小数的 float32。与未舍入的 n/(4*n_c) 的 float32 最大绝对差约 2.98e-7，是先写成六位小数再存成 float32 的差别。未改原文件。
+A2,training_record,A0,42,best_epoch_multiple_of_5_or_last,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,25,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,42,deterministic_flag,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,true,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,42,determinism_switches,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""deterministic_algorithms"": true, ""cudnn_deterministic"": true, ""cudnn_benchmark"": false, ""cublas_workspace_config"": "":4096:8""}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,42,epoch_stats_counts,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"[{""epoch"": null, ""problems"": [""epoch_stats is null""]}]",,不可核对,A0 的 epoch_stats 为 null，逐轮 batches 与 last_batch 没有记录。逐图曝光另行核对：552 张真实图各 30 次，合计与 summary.total_draws 相同。
+A2,training_record,A0,42,fixed_draws_null,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,null,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,42,train_n,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""train_n"": 552, ""train_n_real"": 552, ""train_n_synth"": 0}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,42,exposure_item_sum_equals_summary,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""item_sum"": 16560, ""summary_total"": 16560}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,42,exposure_total_equals_epoch_draws,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""item_sum"": 16560, ""epoch_sum"": null, ""summary_total"": 16560, ""note"": ""A0 epoch_stats is null, so the per-epoch sum cannot be compared""}",,不可核对,A0 的 epoch_stats 为 null，逐轮 batches 与 last_batch 没有记录。逐图曝光另行核对：552 张真实图各 30 次，合计与 summary.total_draws 相同。
+A2,training_record,A0,42,exposure_real_sum_equals_epoch_real,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""items"": 16560, ""epochs"": null}",,不可核对,A0 的 epoch_stats 为 null，逐轮 batches 与 last_batch 没有记录。逐图曝光另行核对：552 张真实图各 30 次，合计与 summary.total_draws 相同。
+A2,training_record,A0,42,exposure_synth_sum_equals_epoch_synth,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""items"": 0, ""epochs"": null}",,不可核对,A0 的 epoch_stats 为 null，逐轮 batches 与 last_batch 没有记录。逐图曝光另行核对：552 张真实图各 30 次，合计与 summary.total_draws 相同。
+A2,training_record,A0,42,exposure_real_mean,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""summary"": 30.0, ""items"": 30.0}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,42,exposure_real_n,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""summary_n"": 552, ""items"": 552}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,42,exposure_real_min_max_full,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""n"": 552, ""mean"": 30.0, ""min"": 30, ""max"": 30, ""full"": 552}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,42,A0_every_real_count_30,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,30.0,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,42,A0_no_synth_items,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,0,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,52,optimizer_steps,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,1050,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,52,n_epoch_stats,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"""epoch_stats is null""",,不可核对,A0 的 epoch_stats 为 null，逐轮 batches 与 last_batch 没有记录。逐图曝光另行核对：552 张真实图各 30 次，合计与 summary.total_draws 相同。
+A2,training_record,A0,52,test_n,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""test_n"": 71, ""n"": 71}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,52,class_weights_equal_float32_documented,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""used"": [1.149999976158142, 0.9857140183448792, 0.9857140183448792, 0.907895028591156], ""max_abs_vs_unrounded_float32"": 2.980232238769531e-07, ""note"": ""stored vector is float32 of the documented 6-decimal weights, not float32 of the unrounded n/(4*n_c)""}",,一致,九次 run 的权重都等于文档六位小数的 float32。与未舍入的 n/(4*n_c) 的 float32 最大绝对差约 2.98e-7，是先写成六位小数再存成 float32 的差别。未改原文件。
+A2,training_record,A0,52,best_epoch_multiple_of_5_or_last,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,10,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,52,deterministic_flag,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,true,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,52,determinism_switches,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""deterministic_algorithms"": true, ""cudnn_deterministic"": true, ""cudnn_benchmark"": false, ""cublas_workspace_config"": "":4096:8""}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,52,epoch_stats_counts,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"[{""epoch"": null, ""problems"": [""epoch_stats is null""]}]",,不可核对,A0 的 epoch_stats 为 null，逐轮 batches 与 last_batch 没有记录。逐图曝光另行核对：552 张真实图各 30 次，合计与 summary.total_draws 相同。
+A2,training_record,A0,52,fixed_draws_null,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,null,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,52,train_n,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""train_n"": 552, ""train_n_real"": 552, ""train_n_synth"": 0}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,52,exposure_item_sum_equals_summary,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""item_sum"": 16560, ""summary_total"": 16560}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,52,exposure_total_equals_epoch_draws,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""item_sum"": 16560, ""epoch_sum"": null, ""summary_total"": 16560, ""note"": ""A0 epoch_stats is null, so the per-epoch sum cannot be compared""}",,不可核对,A0 的 epoch_stats 为 null，逐轮 batches 与 last_batch 没有记录。逐图曝光另行核对：552 张真实图各 30 次，合计与 summary.total_draws 相同。
+A2,training_record,A0,52,exposure_real_sum_equals_epoch_real,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""items"": 16560, ""epochs"": null}",,不可核对,A0 的 epoch_stats 为 null，逐轮 batches 与 last_batch 没有记录。逐图曝光另行核对：552 张真实图各 30 次，合计与 summary.total_draws 相同。
+A2,training_record,A0,52,exposure_synth_sum_equals_epoch_synth,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""items"": 0, ""epochs"": null}",,不可核对,A0 的 epoch_stats 为 null，逐轮 batches 与 last_batch 没有记录。逐图曝光另行核对：552 张真实图各 30 次，合计与 summary.total_draws 相同。
+A2,training_record,A0,52,exposure_real_mean,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""summary"": 30.0, ""items"": 30.0}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,52,exposure_real_n,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""summary_n"": 552, ""items"": 552}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,52,exposure_real_min_max_full,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""n"": 552, ""mean"": 30.0, ""min"": 30, ""max"": 30, ""full"": 552}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,52,A0_every_real_count_30,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,30.0,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,52,A0_no_synth_items,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,0,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,62,optimizer_steps,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,1050,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,62,n_epoch_stats,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"""epoch_stats is null""",,不可核对,A0 的 epoch_stats 为 null，逐轮 batches 与 last_batch 没有记录。逐图曝光另行核对：552 张真实图各 30 次，合计与 summary.total_draws 相同。
+A2,training_record,A0,62,test_n,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""test_n"": 71, ""n"": 71}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,62,class_weights_equal_float32_documented,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""used"": [1.149999976158142, 0.9857140183448792, 0.9857140183448792, 0.907895028591156], ""max_abs_vs_unrounded_float32"": 2.980232238769531e-07, ""note"": ""stored vector is float32 of the documented 6-decimal weights, not float32 of the unrounded n/(4*n_c)""}",,一致,九次 run 的权重都等于文档六位小数的 float32。与未舍入的 n/(4*n_c) 的 float32 最大绝对差约 2.98e-7，是先写成六位小数再存成 float32 的差别。未改原文件。
+A2,training_record,A0,62,best_epoch_multiple_of_5_or_last,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,10,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,62,deterministic_flag,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,true,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,62,determinism_switches,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""deterministic_algorithms"": true, ""cudnn_deterministic"": true, ""cudnn_benchmark"": false, ""cublas_workspace_config"": "":4096:8""}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,62,epoch_stats_counts,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"[{""epoch"": null, ""problems"": [""epoch_stats is null""]}]",,不可核对,A0 的 epoch_stats 为 null，逐轮 batches 与 last_batch 没有记录。逐图曝光另行核对：552 张真实图各 30 次，合计与 summary.total_draws 相同。
+A2,training_record,A0,62,fixed_draws_null,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,null,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,62,train_n,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""train_n"": 552, ""train_n_real"": 552, ""train_n_synth"": 0}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,62,exposure_item_sum_equals_summary,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""item_sum"": 16560, ""summary_total"": 16560}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,62,exposure_total_equals_epoch_draws,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""item_sum"": 16560, ""epoch_sum"": null, ""summary_total"": 16560, ""note"": ""A0 epoch_stats is null, so the per-epoch sum cannot be compared""}",,不可核对,A0 的 epoch_stats 为 null，逐轮 batches 与 last_batch 没有记录。逐图曝光另行核对：552 张真实图各 30 次，合计与 summary.total_draws 相同。
+A2,training_record,A0,62,exposure_real_sum_equals_epoch_real,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""items"": 16560, ""epochs"": null}",,不可核对,A0 的 epoch_stats 为 null，逐轮 batches 与 last_batch 没有记录。逐图曝光另行核对：552 张真实图各 30 次，合计与 summary.total_draws 相同。
+A2,training_record,A0,62,exposure_synth_sum_equals_epoch_synth,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""items"": 0, ""epochs"": null}",,不可核对,A0 的 epoch_stats 为 null，逐轮 batches 与 last_batch 没有记录。逐图曝光另行核对：552 张真实图各 30 次，合计与 summary.total_draws 相同。
+A2,training_record,A0,62,exposure_real_mean,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""summary"": 30.0, ""items"": 30.0}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,62,exposure_real_n,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""summary_n"": 552, ""items"": 552}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,62,exposure_real_min_max_full,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,"{""n"": 552, ""mean"": 30.0, ""min"": 30, ""max"": 30, ""full"": 552}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,62,A0_every_real_count_30,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,30.0,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A0,62,A0_no_synth_items,02_A_t3/t3_runs/A0_20261117.json,见 T3_输入说明.md 的期望,0,,一致,训练记录与输入说明的期望相符。
+A2,run_json_vs_predictions,A1,42,acc,02_A_t3/t3_runs/A1_20261117.json,0.676056338028169,0.676056338028169,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A1,42,balanced_acc,02_A_t3/t3_runs/A1_20261117.json,0.6960470085470085,0.6960470085470085,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A1,42,macro_f1,02_A_t3/t3_runs/A1_20261117.json,0.6995367377720318,0.6995367377720318,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A1,42,qwk,02_A_t3/t3_runs/A1_20261117.json,0.8015421686746989,0.8015421686746989,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A1,42,severe_recall,02_A_t3/t3_runs/A1_20261117.json,0.9230769230769231,0.9230769230769231,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A1,42,confusion,02_A_t3/t3_runs/A1_20261117.json,"[[11, 5, 2, 0], [1, 16, 3, 0], [0, 10, 9, 1], [0, 0, 1, 12]]","[[11, 5, 2, 0], [1, 16, 3, 0], [0, 10, 9, 1], [0, 0, 1, 12]]",,一致,逐格相等。
+A2,run_json_vs_predictions,A1,52,acc,02_A_t3/t3_runs/A1_20261117.json,0.6619718309859155,0.6619718309859155,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A1,52,balanced_acc,02_A_t3/t3_runs/A1_20261117.json,0.6835470085470086,0.6835470085470086,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A1,52,macro_f1,02_A_t3/t3_runs/A1_20261117.json,0.6579065588499551,0.6579065588499551,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A1,52,qwk,02_A_t3/t3_runs/A1_20261117.json,0.7481582537517053,0.7481582537517053,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A1,52,severe_recall,02_A_t3/t3_runs/A1_20261117.json,0.9230769230769231,0.9230769230769231,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A1,52,confusion,02_A_t3/t3_runs/A1_20261117.json,"[[11, 6, 1, 0], [1, 18, 1, 0], [3, 8, 6, 3], [0, 1, 0, 12]]","[[11, 6, 1, 0], [1, 18, 1, 0], [3, 8, 6, 3], [0, 1, 0, 12]]",,一致,逐格相等。
+A2,run_json_vs_predictions,A1,62,acc,02_A_t3/t3_runs/A1_20261117.json,0.6901408450704225,0.6901408450704225,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A1,62,balanced_acc,02_A_t3/t3_runs/A1_20261117.json,0.6992521367521367,0.6992521367521367,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A1,62,macro_f1,02_A_t3/t3_runs/A1_20261117.json,0.7091463414634147,0.7091463414634147,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A1,62,qwk,02_A_t3/t3_runs/A1_20261117.json,0.7755671253253997,0.7755671253253997,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A1,62,severe_recall,02_A_t3/t3_runs/A1_20261117.json,0.7692307692307693,0.7692307692307693,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A1,62,confusion,02_A_t3/t3_runs/A1_20261117.json,"[[14, 3, 1, 0], [0, 14, 6, 0], [3, 5, 11, 1], [0, 0, 3, 10]]","[[14, 3, 1, 0], [0, 14, 6, 0], [3, 5, 11, 1], [0, 0, 3, 10]]",,一致,逐格相等。
+A2,summary_mean,A1,mean,acc,02_A_t3/t3_runs/A1_20261117.json,0.676056338028169,0.676056338028169,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,summary_std,A1,std,acc,02_A_t3/t3_runs/A1_20261117.json,0.011499951844052465,0.011499951844052465,0.0,一致,与三个 seed 的总体标准差（除以 n）一致。
+A2,summary_mean,A1,mean,balanced_acc,02_A_t3/t3_runs/A1_20261117.json,0.692948717948718,0.692948717948718,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,summary_std,A1,std,balanced_acc,02_A_t3/t3_runs/A1_20261117.json,0.006775559827225586,0.006775559827225586,0.0,一致,与三个 seed 的总体标准差（除以 n）一致。
+A2,summary_mean,A1,mean,macro_f1,02_A_t3/t3_runs/A1_20261117.json,0.688863212695134,0.688863212695134,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,summary_std,A1,std,macro_f1,02_A_t3/t3_runs/A1_20261117.json,0.02223843420363384,0.02223843420363384,0.0,一致,与三个 seed 的总体标准差（除以 n）一致。
+A2,summary_mean,A1,mean,qwk,02_A_t3/t3_runs/A1_20261117.json,0.7750891825839347,0.7750891825839347,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,summary_std,A1,std,qwk,02_A_t3/t3_runs/A1_20261117.json,0.02179651218390139,0.02179651218390139,0.0,一致,与三个 seed 的总体标准差（除以 n）一致。
+A2,summary_mean,A1,mean,severe_recall,02_A_t3/t3_runs/A1_20261117.json,0.8717948717948718,0.8717948717948718,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,summary_std,A1,std,severe_recall,02_A_t3/t3_runs/A1_20261117.json,0.0725237724293895,0.0725237724293895,0.0,一致,与三个 seed 的总体标准差（除以 n）一致。
+A2,training_record,A1,42,optimizer_steps,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,1050,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,42,n_epoch_stats,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,30,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,42,test_n,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""test_n"": 71, ""n"": 71}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,42,class_weights_equal_float32_documented,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""used"": [1.149999976158142, 0.9857140183448792, 0.9857140183448792, 0.907895028591156], ""max_abs_vs_unrounded_float32"": 2.980232238769531e-07, ""note"": ""stored vector is float32 of the documented 6-decimal weights, not float32 of the unrounded n/(4*n_c)""}",,一致,九次 run 的权重都等于文档六位小数的 float32。与未舍入的 n/(4*n_c) 的 float32 最大绝对差约 2.98e-7，是先写成六位小数再存成 float32 的差别。未改原文件。
+A2,training_record,A1,42,best_epoch_multiple_of_5_or_last,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,10,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,42,deterministic_flag,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,true,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,42,determinism_switches,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""deterministic_algorithms"": true, ""cudnn_deterministic"": true, ""cudnn_benchmark"": false, ""cublas_workspace_config"": "":4096:8""}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,42,epoch_stats_counts,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"""30 epochs match the recorded budget""",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,42,fixed_draws_552,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,552,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,42,train_n_584,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""train_n"": 584, ""train_n_real"": 552, ""train_n_synth"": 32}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,42,exposure_item_sum_equals_summary,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""item_sum"": 16560, ""summary_total"": 16560}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,42,exposure_total_equals_epoch_draws,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""item_sum"": 16560, ""epoch_sum"": 16560, ""summary_total"": 16560}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,42,exposure_real_sum_equals_epoch_real,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""items"": 15657, ""epochs"": 15657}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,42,exposure_synth_sum_equals_epoch_synth,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""items"": 903, ""epochs"": 903}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,42,exposure_real_mean,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""summary"": 28.3641, ""items"": 28.36413}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,42,exposure_real_n,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""summary_n"": 552, ""items"": 552}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,42,exposure_real_min_max_full,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""n"": 552, ""mean"": 28.3641, ""min"": 24, ""max"": 30, ""full"": 99}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,42,synth_n_32,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,32,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,42,exposure_synth_mean,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""summary"": 28.2188, ""items"": 28.21875}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,42,exposure_synth_min_max_full,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""n"": 32, ""mean"": 28.2188, ""min"": 25, ""max"": 30, ""full"": 6}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,42,synth_files_in_pool_manifest,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""n"": 32, ""missing"": [], ""extra"": []}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,42,observed_mean_near_uniform_expectation,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""uniform_expectation"": 28.356164383561644, ""real_mean"": 28.36413043478261, ""synth_mean"": 28.21875, ""note"": ""expectation under sampling 552 of 584 without replacement; not a test""}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,52,optimizer_steps,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,1050,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,52,n_epoch_stats,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,30,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,52,test_n,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""test_n"": 71, ""n"": 71}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,52,class_weights_equal_float32_documented,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""used"": [1.149999976158142, 0.9857140183448792, 0.9857140183448792, 0.907895028591156], ""max_abs_vs_unrounded_float32"": 2.980232238769531e-07, ""note"": ""stored vector is float32 of the documented 6-decimal weights, not float32 of the unrounded n/(4*n_c)""}",,一致,九次 run 的权重都等于文档六位小数的 float32。与未舍入的 n/(4*n_c) 的 float32 最大绝对差约 2.98e-7，是先写成六位小数再存成 float32 的差别。未改原文件。
+A2,training_record,A1,52,best_epoch_multiple_of_5_or_last,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,15,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,52,deterministic_flag,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,true,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,52,determinism_switches,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""deterministic_algorithms"": true, ""cudnn_deterministic"": true, ""cudnn_benchmark"": false, ""cublas_workspace_config"": "":4096:8""}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,52,epoch_stats_counts,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"""30 epochs match the recorded budget""",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,52,fixed_draws_552,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,552,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,52,train_n_584,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""train_n"": 584, ""train_n_real"": 552, ""train_n_synth"": 32}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,52,exposure_item_sum_equals_summary,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""item_sum"": 16560, ""summary_total"": 16560}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,52,exposure_total_equals_epoch_draws,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""item_sum"": 16560, ""epoch_sum"": 16560, ""summary_total"": 16560}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,52,exposure_real_sum_equals_epoch_real,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""items"": 15647, ""epochs"": 15647}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,52,exposure_synth_sum_equals_epoch_synth,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""items"": 913, ""epochs"": 913}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,52,exposure_real_mean,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""summary"": 28.346, ""items"": 28.346014}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,52,exposure_real_n,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""summary_n"": 552, ""items"": 552}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,52,exposure_real_min_max_full,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""n"": 552, ""mean"": 28.346, ""min"": 23, ""max"": 30, ""full"": 94}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,52,synth_n_32,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,32,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,52,exposure_synth_mean,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""summary"": 28.5312, ""items"": 28.53125}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,52,exposure_synth_min_max_full,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""n"": 32, ""mean"": 28.5312, ""min"": 27, ""max"": 30, ""full"": 3}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,52,synth_files_in_pool_manifest,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""n"": 32, ""missing"": [], ""extra"": []}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,52,observed_mean_near_uniform_expectation,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""uniform_expectation"": 28.356164383561644, ""real_mean"": 28.346014492753625, ""synth_mean"": 28.53125, ""note"": ""expectation under sampling 552 of 584 without replacement; not a test""}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,62,optimizer_steps,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,1050,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,62,n_epoch_stats,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,30,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,62,test_n,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""test_n"": 71, ""n"": 71}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,62,class_weights_equal_float32_documented,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""used"": [1.149999976158142, 0.9857140183448792, 0.9857140183448792, 0.907895028591156], ""max_abs_vs_unrounded_float32"": 2.980232238769531e-07, ""note"": ""stored vector is float32 of the documented 6-decimal weights, not float32 of the unrounded n/(4*n_c)""}",,一致,九次 run 的权重都等于文档六位小数的 float32。与未舍入的 n/(4*n_c) 的 float32 最大绝对差约 2.98e-7，是先写成六位小数再存成 float32 的差别。未改原文件。
+A2,training_record,A1,62,best_epoch_multiple_of_5_or_last,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,10,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,62,deterministic_flag,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,true,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,62,determinism_switches,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""deterministic_algorithms"": true, ""cudnn_deterministic"": true, ""cudnn_benchmark"": false, ""cublas_workspace_config"": "":4096:8""}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,62,epoch_stats_counts,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"""30 epochs match the recorded budget""",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,62,fixed_draws_552,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,552,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,62,train_n_584,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""train_n"": 584, ""train_n_real"": 552, ""train_n_synth"": 32}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,62,exposure_item_sum_equals_summary,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""item_sum"": 16560, ""summary_total"": 16560}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,62,exposure_total_equals_epoch_draws,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""item_sum"": 16560, ""epoch_sum"": 16560, ""summary_total"": 16560}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,62,exposure_real_sum_equals_epoch_real,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""items"": 15656, ""epochs"": 15656}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,62,exposure_synth_sum_equals_epoch_synth,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""items"": 904, ""epochs"": 904}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,62,exposure_real_mean,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""summary"": 28.3623, ""items"": 28.362319}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,62,exposure_real_n,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""summary_n"": 552, ""items"": 552}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,62,exposure_real_min_max_full,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""n"": 552, ""mean"": 28.3623, ""min"": 25, ""max"": 30, ""full"": 98}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,62,synth_n_32,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,32,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,62,exposure_synth_mean,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""summary"": 28.25, ""items"": 28.25}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,62,exposure_synth_min_max_full,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""n"": 32, ""mean"": 28.25, ""min"": 26, ""max"": 30, ""full"": 4}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,62,synth_files_in_pool_manifest,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""n"": 32, ""missing"": [], ""extra"": []}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A1,62,observed_mean_near_uniform_expectation,02_A_t3/t3_runs/A1_20261117.json,见 T3_输入说明.md 的期望,"{""uniform_expectation"": 28.356164383561644, ""real_mean"": 28.36231884057971, ""synth_mean"": 28.25, ""note"": ""expectation under sampling 552 of 584 without replacement; not a test""}",,一致,训练记录与输入说明的期望相符。
+A2,run_json_vs_predictions,A2,42,acc,02_A_t3/t3_runs/A2_20261117.json,0.6619718309859155,0.6619718309859155,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A2,42,balanced_acc,02_A_t3/t3_runs/A2_20261117.json,0.6714743589743589,0.6714743589743589,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A2,42,macro_f1,02_A_t3/t3_runs/A2_20261117.json,0.673265460030166,0.673265460030166,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A2,42,qwk,02_A_t3/t3_runs/A2_20261117.json,0.7023060796645701,0.7023060796645701,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A2,42,severe_recall,02_A_t3/t3_runs/A2_20261117.json,0.7692307692307693,0.7692307692307693,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A2,42,confusion,02_A_t3/t3_runs/A2_20261117.json,"[[12, 5, 1, 0], [1, 17, 2, 0], [2, 9, 8, 1], [1, 1, 1, 10]]","[[12, 5, 1, 0], [1, 17, 2, 0], [2, 9, 8, 1], [1, 1, 1, 10]]",,一致,逐格相等。
+A2,run_json_vs_predictions,A2,52,acc,02_A_t3/t3_runs/A2_20261117.json,0.6619718309859155,0.6619718309859155,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A2,52,balanced_acc,02_A_t3/t3_runs/A2_20261117.json,0.6835470085470086,0.6835470085470086,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A2,52,macro_f1,02_A_t3/t3_runs/A2_20261117.json,0.6788926757551457,0.6788926757551457,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A2,52,qwk,02_A_t3/t3_runs/A2_20261117.json,0.7669159219405435,0.7669159219405435,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A2,52,severe_recall,02_A_t3/t3_runs/A2_20261117.json,0.9230769230769231,0.9230769230769231,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A2,52,confusion,02_A_t3/t3_runs/A2_20261117.json,"[[11, 4, 3, 0], [1, 13, 6, 0], [0, 5, 11, 4], [0, 1, 0, 12]]","[[11, 4, 3, 0], [1, 13, 6, 0], [0, 5, 11, 4], [0, 1, 0, 12]]",,一致,逐格相等。
+A2,run_json_vs_predictions,A2,62,acc,02_A_t3/t3_runs/A2_20261117.json,0.7183098591549296,0.7183098591549296,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A2,62,balanced_acc,02_A_t3/t3_runs/A2_20261117.json,0.7349358974358975,0.7349358974358975,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A2,62,macro_f1,02_A_t3/t3_runs/A2_20261117.json,0.730395793509398,0.730395793509398,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A2,62,qwk,02_A_t3/t3_runs/A2_20261117.json,0.7910996689959544,0.7910996689959544,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A2,62,severe_recall,02_A_t3/t3_runs/A2_20261117.json,0.9230769230769231,0.9230769230769231,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,run_json_vs_predictions,A2,62,confusion,02_A_t3/t3_runs/A2_20261117.json,"[[12, 3, 3, 0], [1, 16, 3, 0], [0, 6, 11, 3], [0, 1, 0, 12]]","[[12, 3, 3, 0], [1, 16, 3, 0], [0, 6, 11, 3], [0, 1, 0, 12]]",,一致,逐格相等。
+A2,summary_mean,A2,mean,acc,02_A_t3/t3_runs/A2_20261117.json,0.6807511737089201,0.6807511737089201,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,summary_std,A2,std,acc,02_A_t3/t3_runs/A2_20261117.json,0.026558001171325743,0.026558001171325743,0.0,一致,与三个 seed 的总体标准差（除以 n）一致。
+A2,summary_mean,A2,mean,balanced_acc,02_A_t3/t3_runs/A2_20261117.json,0.6966524216524217,0.6966524216524217,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,summary_std,A2,std,balanced_acc,02_A_t3/t3_runs/A2_20261117.json,0.02751551811219728,0.02751551811219728,0.0,一致,与三个 seed 的总体标准差（除以 n）一致。
+A2,summary_mean,A2,mean,macro_f1,02_A_t3/t3_runs/A2_20261117.json,0.6941846430982365,0.6941846430982365,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,summary_std,A2,std,macro_f1,02_A_t3/t3_runs/A2_20261117.json,0.025708000697301517,0.025708000697301517,0.0,一致,与三个 seed 的总体标准差（除以 n）一致。
+A2,summary_mean,A2,mean,qwk,02_A_t3/t3_runs/A2_20261117.json,0.7534405568670227,0.7534405568670227,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,summary_std,A2,std,qwk,02_A_t3/t3_runs/A2_20261117.json,0.037481235078246175,0.037481235078246175,0.0,一致,与三个 seed 的总体标准差（除以 n）一致。
+A2,summary_mean,A2,mean,severe_recall,02_A_t3/t3_runs/A2_20261117.json,0.8717948717948719,0.8717948717948719,0.0,一致,独立计算与原记录在 1e-9 以内一致。
+A2,summary_std,A2,std,severe_recall,02_A_t3/t3_runs/A2_20261117.json,0.0725237724293895,0.0725237724293895,0.0,一致,与三个 seed 的总体标准差（除以 n）一致。
+A2,training_record,A2,42,optimizer_steps,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,1050,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,42,n_epoch_stats,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,30,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,42,test_n,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""test_n"": 71, ""n"": 71}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,42,class_weights_equal_float32_documented,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""used"": [1.149999976158142, 0.9857140183448792, 0.9857140183448792, 0.907895028591156], ""max_abs_vs_unrounded_float32"": 2.980232238769531e-07, ""note"": ""stored vector is float32 of the documented 6-decimal weights, not float32 of the unrounded n/(4*n_c)""}",,一致,九次 run 的权重都等于文档六位小数的 float32。与未舍入的 n/(4*n_c) 的 float32 最大绝对差约 2.98e-7，是先写成六位小数再存成 float32 的差别。未改原文件。
+A2,training_record,A2,42,best_epoch_multiple_of_5_or_last,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,15,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,42,deterministic_flag,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,true,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,42,determinism_switches,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""deterministic_algorithms"": true, ""cudnn_deterministic"": true, ""cudnn_benchmark"": false, ""cublas_workspace_config"": "":4096:8""}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,42,epoch_stats_counts,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"""30 epochs match the recorded budget""",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,42,fixed_draws_552,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,552,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,42,train_n_584,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""train_n"": 584, ""train_n_real"": 552, ""train_n_synth"": 32}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,42,exposure_item_sum_equals_summary,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""item_sum"": 16560, ""summary_total"": 16560}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,42,exposure_total_equals_epoch_draws,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""item_sum"": 16560, ""epoch_sum"": 16560, ""summary_total"": 16560}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,42,exposure_real_sum_equals_epoch_real,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""items"": 15657, ""epochs"": 15657}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,42,exposure_synth_sum_equals_epoch_synth,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""items"": 903, ""epochs"": 903}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,42,exposure_real_mean,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""summary"": 28.3641, ""items"": 28.36413}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,42,exposure_real_n,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""summary_n"": 552, ""items"": 552}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,42,exposure_real_min_max_full,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""n"": 552, ""mean"": 28.3641, ""min"": 24, ""max"": 30, ""full"": 99}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,42,synth_n_32,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,32,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,42,exposure_synth_mean,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""summary"": 28.2188, ""items"": 28.21875}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,42,exposure_synth_min_max_full,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""n"": 32, ""mean"": 28.2188, ""min"": 25, ""max"": 30, ""full"": 6}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,42,synth_files_in_pool_manifest,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""n"": 32, ""missing"": [], ""extra"": []}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,42,observed_mean_near_uniform_expectation,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""uniform_expectation"": 28.356164383561644, ""real_mean"": 28.36413043478261, ""synth_mean"": 28.21875, ""note"": ""expectation under sampling 552 of 584 without replacement; not a test""}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,52,optimizer_steps,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,1050,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,52,n_epoch_stats,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,30,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,52,test_n,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""test_n"": 71, ""n"": 71}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,52,class_weights_equal_float32_documented,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""used"": [1.149999976158142, 0.9857140183448792, 0.9857140183448792, 0.907895028591156], ""max_abs_vs_unrounded_float32"": 2.980232238769531e-07, ""note"": ""stored vector is float32 of the documented 6-decimal weights, not float32 of the unrounded n/(4*n_c)""}",,一致,九次 run 的权重都等于文档六位小数的 float32。与未舍入的 n/(4*n_c) 的 float32 最大绝对差约 2.98e-7，是先写成六位小数再存成 float32 的差别。未改原文件。
+A2,training_record,A2,52,best_epoch_multiple_of_5_or_last,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,20,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,52,deterministic_flag,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,true,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,52,determinism_switches,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""deterministic_algorithms"": true, ""cudnn_deterministic"": true, ""cudnn_benchmark"": false, ""cublas_workspace_config"": "":4096:8""}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,52,epoch_stats_counts,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"""30 epochs match the recorded budget""",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,52,fixed_draws_552,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,552,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,52,train_n_584,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""train_n"": 584, ""train_n_real"": 552, ""train_n_synth"": 32}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,52,exposure_item_sum_equals_summary,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""item_sum"": 16560, ""summary_total"": 16560}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,52,exposure_total_equals_epoch_draws,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""item_sum"": 16560, ""epoch_sum"": 16560, ""summary_total"": 16560}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,52,exposure_real_sum_equals_epoch_real,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""items"": 15647, ""epochs"": 15647}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,52,exposure_synth_sum_equals_epoch_synth,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""items"": 913, ""epochs"": 913}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,52,exposure_real_mean,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""summary"": 28.346, ""items"": 28.346014}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,52,exposure_real_n,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""summary_n"": 552, ""items"": 552}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,52,exposure_real_min_max_full,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""n"": 552, ""mean"": 28.346, ""min"": 23, ""max"": 30, ""full"": 94}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,52,synth_n_32,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,32,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,52,exposure_synth_mean,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""summary"": 28.5312, ""items"": 28.53125}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,52,exposure_synth_min_max_full,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""n"": 32, ""mean"": 28.5312, ""min"": 27, ""max"": 30, ""full"": 3}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,52,synth_files_in_pool_manifest,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""n"": 32, ""missing"": [], ""extra"": []}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,52,observed_mean_near_uniform_expectation,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""uniform_expectation"": 28.356164383561644, ""real_mean"": 28.346014492753625, ""synth_mean"": 28.53125, ""note"": ""expectation under sampling 552 of 584 without replacement; not a test""}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,62,optimizer_steps,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,1050,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,62,n_epoch_stats,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,30,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,62,test_n,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""test_n"": 71, ""n"": 71}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,62,class_weights_equal_float32_documented,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""used"": [1.149999976158142, 0.9857140183448792, 0.9857140183448792, 0.907895028591156], ""max_abs_vs_unrounded_float32"": 2.980232238769531e-07, ""note"": ""stored vector is float32 of the documented 6-decimal weights, not float32 of the unrounded n/(4*n_c)""}",,一致,九次 run 的权重都等于文档六位小数的 float32。与未舍入的 n/(4*n_c) 的 float32 最大绝对差约 2.98e-7，是先写成六位小数再存成 float32 的差别。未改原文件。
+A2,training_record,A2,62,best_epoch_multiple_of_5_or_last,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,15,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,62,deterministic_flag,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,true,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,62,determinism_switches,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""deterministic_algorithms"": true, ""cudnn_deterministic"": true, ""cudnn_benchmark"": false, ""cublas_workspace_config"": "":4096:8""}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,62,epoch_stats_counts,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"""30 epochs match the recorded budget""",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,62,fixed_draws_552,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,552,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,62,train_n_584,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""train_n"": 584, ""train_n_real"": 552, ""train_n_synth"": 32}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,62,exposure_item_sum_equals_summary,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""item_sum"": 16560, ""summary_total"": 16560}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,62,exposure_total_equals_epoch_draws,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""item_sum"": 16560, ""epoch_sum"": 16560, ""summary_total"": 16560}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,62,exposure_real_sum_equals_epoch_real,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""items"": 15656, ""epochs"": 15656}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,62,exposure_synth_sum_equals_epoch_synth,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""items"": 904, ""epochs"": 904}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,62,exposure_real_mean,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""summary"": 28.3623, ""items"": 28.362319}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,62,exposure_real_n,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""summary_n"": 552, ""items"": 552}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,62,exposure_real_min_max_full,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""n"": 552, ""mean"": 28.3623, ""min"": 25, ""max"": 30, ""full"": 98}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,62,synth_n_32,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,32,,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,62,exposure_synth_mean,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""summary"": 28.25, ""items"": 28.25}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,62,exposure_synth_min_max_full,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""n"": 32, ""mean"": 28.25, ""min"": 26, ""max"": 30, ""full"": 4}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,62,synth_files_in_pool_manifest,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""n"": 32, ""missing"": [], ""extra"": []}",,一致,训练记录与输入说明的期望相符。
+A2,training_record,A2,62,observed_mean_near_uniform_expectation,02_A_t3/t3_runs/A2_20261117.json,见 T3_输入说明.md 的期望,"{""uniform_expectation"": 28.356164383561644, ""real_mean"": 28.36231884057971, ""synth_mean"": 28.25, ""note"": ""expectation under sampling 552 of 584 without replacement; not a test""}",,一致,训练记录与输入说明的期望相符。
+A2,A1_A2_epoch_stats,A1-A2,42,epoch_stats_identical,02_A_t3/t3_runs/A1_20261117.json; 02_A_t3/t3_runs/A2_20261117.json,同 seed 的抽样记录与同名条件图曝光一致,True,,一致,同 seed 下记录相同。
+A2,A1_A2_real_exposure,A1-A2,42,real_exposure_identical,02_A_t3/t3_runs/A1_20261117.json; 02_A_t3/t3_runs/A2_20261117.json,同 seed 的抽样记录与同名条件图曝光一致,True,,一致,同 seed 下记录相同。
+A2,A1_A2_synth_exposure,A1-A2,42,synth_basename_exposure_identical,02_A_t3/t3_runs/A1_20261117.json; 02_A_t3/t3_runs/A2_20261117.json,同 seed 的抽样记录与同名条件图曝光一致,True,,一致,同 seed 下记录相同。
+A2,A1_A2_epoch_stats,A1-A2,52,epoch_stats_identical,02_A_t3/t3_runs/A1_20261117.json; 02_A_t3/t3_runs/A2_20261117.json,同 seed 的抽样记录与同名条件图曝光一致,True,,一致,同 seed 下记录相同。
+A2,A1_A2_real_exposure,A1-A2,52,real_exposure_identical,02_A_t3/t3_runs/A1_20261117.json; 02_A_t3/t3_runs/A2_20261117.json,同 seed 的抽样记录与同名条件图曝光一致,True,,一致,同 seed 下记录相同。
+A2,A1_A2_synth_exposure,A1-A2,52,synth_basename_exposure_identical,02_A_t3/t3_runs/A1_20261117.json; 02_A_t3/t3_runs/A2_20261117.json,同 seed 的抽样记录与同名条件图曝光一致,True,,一致,同 seed 下记录相同。
+A2,A1_A2_epoch_stats,A1-A2,62,epoch_stats_identical,02_A_t3/t3_runs/A1_20261117.json; 02_A_t3/t3_runs/A2_20261117.json,同 seed 的抽样记录与同名条件图曝光一致,True,,一致,同 seed 下记录相同。
+A2,A1_A2_real_exposure,A1-A2,62,real_exposure_identical,02_A_t3/t3_runs/A1_20261117.json; 02_A_t3/t3_runs/A2_20261117.json,同 seed 的抽样记录与同名条件图曝光一致,True,,一致,同 seed 下记录相同。
+A2,A1_A2_synth_exposure,A1-A2,62,synth_basename_exposure_identical,02_A_t3/t3_runs/A1_20261117.json; 02_A_t3/t3_runs/A2_20261117.json,同 seed 的抽样记录与同名条件图曝光一致,True,,一致,同 seed 下记录相同。

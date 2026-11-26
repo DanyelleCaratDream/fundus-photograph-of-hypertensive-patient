@@ -1,0 +1,17 @@
+﻿arm,seed,true,pred,count,row_fraction
+A2,42,normal,normal,13,0.7222222222222222
+A2,42,normal,mild,4,0.2222222222222222
+A2,42,normal,moderate,1,0.05555555555555555
+A2,42,normal,severe,0,0.0
+A2,42,mild,normal,3,0.15
+A2,42,mild,mild,14,0.7
+A2,42,mild,moderate,3,0.15
+A2,42,mild,severe,0,0.0
+A2,42,moderate,normal,3,0.15
+A2,42,moderate,mild,6,0.3
+A2,42,moderate,moderate,10,0.5
+A2,42,moderate,severe,1,0.05
+A2,42,severe,normal,0,0.0
+A2,42,severe,mild,1,0.07692307692307693
+A2,42,severe,moderate,1,0.07692307692307693
+A2,42,severe,severe,11,0.8461538461538461
